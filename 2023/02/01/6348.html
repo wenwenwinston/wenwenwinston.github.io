@@ -1,0 +1,1652 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Linux操作系统的使用 | FloweryMidgard</title><meta name="author" content="FloweryMidgard"><meta name="copyright" content="FloweryMidgard"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基础的Linux系统知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux操作系统的使用">
+<meta property="og:url" content="https://wenwenmidgard.github.io/2023/02/01/6348.html">
+<meta property="og:site_name" content="FloweryMidgard">
+<meta property="og:description" content="基础的Linux系统知识">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wenwenmidgard.github.io/images/note/top_img_7.jpg">
+<meta property="article:published_time" content="2023-02-01T02:24:00.000Z">
+<meta property="article:modified_time" content="2023-02-01T02:24:00.000Z">
+<meta property="article:author" content="FloweryMidgard">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wenwenmidgard.github.io/images/note/top_img_7.jpg"><link rel="shortcut icon" href="/images/favicon.ico"><link rel="canonical" href="https://wenwenmidgard.github.io/2023/02/01/6348.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: FloweryMidgard","link":"链接: ","source":"来源: FloweryMidgard","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux操作系统的使用',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-01 10:24:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/UserPhoto.gif" onerror="onerror=null;src='/images/404/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-compass"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/note/top_img_7.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="FloweryMidgard"><span class="site-name">FloweryMidgard</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-compass"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux操作系统的使用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-01T02:24:00.000Z" title="发表于 2023-02-01 10:24:00">2023-02-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-01T02:24:00.000Z" title="更新于 2023-02-01 10:24:00">2023-02-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">15.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>51分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux操作系统的使用"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Linux目录结构"><a href="#Linux目录结构" class="headerlink" title="Linux目录结构"></a>Linux目录结构</h1><p>Linux的目录结构是一个树型结构。Windows 系统可以拥有多个盘符， 如 C盘、D盘。Linux没有盘符这个概念， 只有一个根目录<code>/</code>， 所有文件都在它下面。在Linux系统中，路径之间的层级关系，使用：<code>/</code> 来表示，在Windows系统中，路径之间的层级关系，使用：<code>\</code>来表示。</p>
+<img src="/2023/02/01/6348/Snipaste_2023-03-25_11-33-31.jpg" class="" title="Linux目录结构">
+
+<table>
+<thead>
+<tr>
+<th align="center">目录</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">/bin</td>
+<td align="center">bin 是二进制文件的缩写，这个目录存放着最经常使用的命令。</td>
+</tr>
+<tr>
+<td align="center">/boot</td>
+<td align="center">这里存放的是启动 Linux 时使用的一些核心文件，包括一些连接文件以及镜像文件。</td>
+</tr>
+<tr>
+<td align="center">/dev</td>
+<td align="center">dev 是 Device(设备) 的缩写， 该目录下存放的是 Linux 的外部设备，在 Linux 中访问设备的方式和访问文件的方式是相同的。</td>
+</tr>
+<tr>
+<td align="center">/etc</td>
+<td align="center">etc 是 Etcetera(其他) 的缩写，这个目录用来存放所有的系统管理所需要的配置文件和子目录。</td>
+</tr>
+<tr>
+<td align="center">/home</td>
+<td align="center">用户的主目录，在 Linux 中，每个用户都有一个自己的目录，一般该目录名以用户的账号命名。</td>
+</tr>
+<tr>
+<td align="center">/root</td>
+<td align="center">该目录为系统管理员，也称作超级权限者的用户主目录。</td>
+</tr>
+<tr>
+<td align="center">/lib</td>
+<td align="center">lib 是 Library(库) 的缩写，这个目录里存放着系统最基本的动态连接共享库。</td>
+</tr>
+<tr>
+<td align="center">/media</td>
+<td align="center">linux 系统会自动识别一些设备，例如U盘、光驱等，当识别后，Linux 会把识别的设备挂载到这个目录下。</td>
+</tr>
+<tr>
+<td align="center">/mnt</td>
+<td align="center">该目录是为了让用户临时挂载别的文件系统的，可将光驱挂载在 /mnt/ 上，然后进入该目录就可以查看光驱里的内容。</td>
+</tr>
+<tr>
+<td align="center">/opt</td>
+<td align="center">opt 是 optional(可选) 的缩写，这是给主机额外安装软件所摆放的目录。比如安装数据库则就可以放到这个目录下。默认是空的。</td>
+</tr>
+<tr>
+<td align="center">/sbin</td>
+<td align="center">s 就是 Super User 的意思，是 Superuser Binaries (超级用户的二进制文件) 的缩写，这里存放的是系统管理员使用的系统管理程序。</td>
+</tr>
+<tr>
+<td align="center">/tmp</td>
+<td align="center">tmp 是 temporary(临时) 的缩写这个目录是用来存放一些临时文件的。</td>
+</tr>
+<tr>
+<td align="center">/usr</td>
+<td align="center">usr 是 unix shared resources(共享资源) 的缩写，这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于 windows 下的 program files 目录。</td>
+</tr>
+<tr>
+<td align="center">/usr/bin</td>
+<td align="center">系统用户使用的应用程序。</td>
+</tr>
+<tr>
+<td align="center">/usr/sbin</td>
+<td align="center">超级用户使用的比较高级的管理程序和系统守护程序。</td>
+</tr>
+<tr>
+<td align="center">/var</td>
+<td align="center">var 是 variable(变量) 的缩写，这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。</td>
+</tr>
+<tr>
+<td align="center">/run</td>
+<td align="center">是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。如果你的系统上有 /var/run 目录，应该让它指向 run。</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="Linux环境变量"><a href="#Linux环境变量" class="headerlink" title="Linux环境变量"></a>Linux环境变量</h1><p>环境变量是操作系统（Windows、Linux、Mac）在运行的时候，记录的一些关键性信息，用以辅助系统运行。<br>在Linux系统中执行<code>env</code>命令即可查看当前系统中记录的环境变量。<br>环境变量是一种KeyValue型结构，即名称和值。</p>
+<h2 id="PATH"><a href="#PATH" class="headerlink" title="PATH"></a>PATH</h2><p>环境变量<code>PATH</code>会记录一组目录，目录之间用<code>:</code>隔开。这里记录的是命令的搜索路径，当执行命令会从记录中记录的目录中挨个搜索要执行的命令并执行。<br>可以通过修改这个项目的值，加入自定义的命令搜索路径。</p>
+<h2 id="PATH变量值获取"><a href="#PATH变量值获取" class="headerlink" title="PATH变量值获取"></a>PATH变量值获取</h2><ul>
+<li>通过<code>env</code>命令可以查看环境变量信息，<code>env | grep PATH</code>。</li>
+<li>通过<code>$</code>符号，可以取出环境变量的值，<code>echo $PATH</code>。</li>
+</ul>
+<h2 id="PATH变量值设置"><a href="#PATH变量值设置" class="headerlink" title="PATH变量值设置"></a>PATH变量值设置</h2><p>Linux环境变量可以用户自行设置，其中分为：</p>
+<ul>
+<li>临时生效，<code>export PATH=$PATH:自定义路径</code>。</li>
+<li>永久生效：<ul>
+<li>针对用户：<code>~/.bashrc</code>文件中配置。</li>
+<li>针对全部用户：<code>/etc/profile</code>文件中配置。</li>
+<li>配置完成，可以通过<code>source</code>命令立刻生效。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="Linux路径"><a href="#Linux路径" class="headerlink" title="Linux路径"></a>Linux路径</h1><h2 id="绝对路径"><a href="#绝对路径" class="headerlink" title="绝对路径"></a>绝对路径</h2><p>绝对路径：以根目录为起点，描述路径的一种写法，路径描述以/开头。如<code>cd /etc</code>。</p>
+<hr>
+<h2 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h2><p>相对路径：以当前目录为起点，描述路径的一种写法，路径描述无需以/开头。如<code>cd Desktop</code>。</p>
+<hr>
+<h2 id="特殊路径符"><a href="#特殊路径符" class="headerlink" title="特殊路径符"></a>特殊路径符</h2><ul>
+<li><code>.</code>表示当前目录，比如 <code>cd ./Desktop</code> 表示切换到当前目录下的Desktop目录内，和<code>cd Desktop</code>效果一致。</li>
+<li><code>..</code>表示上一级目录，比如：<code>cd ..</code>即可切换到上一级目录，<code>cd ../..</code>切换到上二级的目录。</li>
+<li><code>~</code>表示HOME目录，比如：<code>cd ~</code>  即可切换到HOME目录或<code>cd ~/Desktop</code>，切换到HOME内的Desktop目录。</li>
+<li></li>
+</ul>
+<hr>
+<h1 id="用户、用户组"><a href="#用户、用户组" class="headerlink" title="用户、用户组"></a>用户、用户组</h1><p>Linux系统中可以：</p>
+<ul>
+<li>配置多个用户。</li>
+<li>配置多个用户组。</li>
+<li>用户可以加入多个用户组中。</li>
+</ul>
+<p>Linux中关于权限的管控级别有2个级别，分别是：</p>
+<ul>
+<li>针对用户的权限控制。</li>
+<li>针对用户组的权限控制。</li>
+</ul>
+<p>比如，针对某文件，可以控制用户的权限，也可以控制用户组的权限。</p>
+<hr>
+<h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><p>用户账号的管理工作主要涉及到用户账号的添加、修改和删除。</p>
+<p>添加用户账号就是在系统中创建一个新账号，然后为新账号分配用户号、用户组、主目录和登录Shell等资源。刚添加的账号是被锁定的，无法使用。</p>
+<p>增加用户账号就是在<code>/etc/passwd</code>文件中为新用户增加一条记录，同时更新其他系统文件如<code>/etc/shadow</code>, <code>/etc/group</code>等。Linux提供了集成的系统管理工具userconf，它可以用来对用户账号进行统一管理。</p>
+<p><strong>以下命令需root用户执行。</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>useradd</code></td>
+<td align="center">创建用户</td>
+</tr>
+<tr>
+<td align="center"><code>userdel</code></td>
+<td align="center">删除用户</td>
+</tr>
+<tr>
+<td align="center"><code>usermod</code></td>
+<td align="center">修改帐号</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="用户组管理"><a href="#用户组管理" class="headerlink" title="用户组管理"></a>用户组管理</h2><p>用户组的管理涉及用户组的添加、删除和修改。</p>
+<p>组的增加、删除和修改实际上就是对<code>/etc/group</code>文件的更新。</p>
+<p><strong>以下命令需root用户执行。</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>groupadd</code></td>
+<td align="center">创建用户组</td>
+</tr>
+<tr>
+<td align="center"><code>groupdel</code></td>
+<td align="center">删除用户组</td>
+</tr>
+<tr>
+<td align="center"><code>groupmod</code></td>
+<td align="center">修改用户组</td>
+</tr>
+<tr>
+<td align="center"><code>newgrp</code></td>
+<td align="center">用户组之间切换</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="超级管理员"><a href="#超级管理员" class="headerlink" title="超级管理员"></a>超级管理员</h2><p>无论是Windows、MacOS、Linux均采用多用户的管理模式进行权限管理。在Linux系统中，拥有最大权限的账户名为：root（超级管理员）。</p>
+<p>root用户拥有最大的系统操作权限，而普通用户在许多地方的权限是受限的。</p>
+<ul>
+<li>普通用户的权限，一般在其HOME目录内是不受限的。</li>
+<li>一旦出了HOME目录，大多数地方，普通用户仅有只读和执行权限，无修改权限。</li>
+<li>显示当前用户的命令为 <code>whoami</code> 。</li>
+<li>切换用户，<code>su root</code>，此种方式不会将工作目录变更为<code>/root</code>目录。</li>
+<li>切换用户，改变环境变量，<code>su - root</code>，此种方式会将工作目录变更为<code>/root</code>目录。</li>
+</ul>
+<hr>
+<h1 id="Linux-文件基本属性"><a href="#Linux-文件基本属性" class="headerlink" title="Linux 文件基本属性"></a>Linux 文件基本属性</h1><p>Linux 系统是一种典型的多用户系统，不同的用户处于不同的地位，拥有不同的权限。</p>
+<p>为了保护系统的安全性，Linux 系统对不同的用户访问同一文件（包括目录文件）的权限做了不同的规定。</p>
+<p>在 Linux 中我们可以使用<code>ll</code>或者<code>ls –l</code>命令来显示一个文件的属性以及文件所属的用户和组，如：</p>
+<img src="/2023/02/01/6348/image-20230410011559429.png" class="" title="文件权限">
+
+<ul>
+<li>序号1，表示文件、文件夹的权限控制信息，可使用<code>chmod</code>命令修改权限控制信息。<ul>
+<li>从左至右用0-9这些数字来表示。第0位确定文件类型，第1-3位确定属主（该文件的所有者）拥有该文件的权限。第4-6位确定属组（所有者的同组用户）拥有该文件的权限，第7-9位确定其他用户拥有该文件的权限。</li>
+<li>第0位第一个字符代表这个文件是目录、文件或链接文件等等，当为<code>d</code>则是目录，当为<code>-</code>则是文件，当为<code>l</code>则表示为链接文档；</li>
+<li>文件的权限表示，均为 rwx 的三个参数的组合。其中，<code>r</code>代表可读、<code>w</code>代表可写、<code>x</code>代表可执行。这三个权限的位置不会改变，如果没有权限，就会使用减号<code>-</code>表示。</li>
+<li><code>r</code>，针对文件可以查看文件内容，针对文件夹，可以查看文件夹内容，如<code>ls</code>命令。</li>
+<li><code>w</code>，针对文件表示可以修改此文件，针对文件夹，可以在文件夹内：创建、删除、改名等操作。</li>
+<li><code>x</code>，针对文件表示可以将文件作为程序执行，针对文件夹，表示可以更改工作目录到此文件夹，即<code>cd</code>进入。</li>
+</ul>
+</li>
+<li>序号2，表示文件、文件夹所属用户，可使用<code>chown</code>命令修改所属用户。</li>
+<li>序号3，表示文件、文件夹所属用户组，可使用<code>chown</code>命令修改所属用户组。</li>
+</ul>
+<hr>
+<h1 id="Linux命令"><a href="#Linux命令" class="headerlink" title="Linux命令"></a>Linux命令</h1><h2 id="Linux命令基础格式"><a href="#Linux命令基础格式" class="headerlink" title="Linux命令基础格式"></a>Linux命令基础格式</h2><p>无论是什么命令，用于什么用途，在Linux中，命令有其通用的格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command [-option][arguments]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>command： 命令本身</li>
+<li>-options：[可选，非必填]命令的一些选项，可以通过选项控制命令的行为细节</li>
+<li>arguments：[可选，非必填]命令的参数，多数用于命令的指向目标等</li>
+</ul>
+<hr>
+<h2 id="磁盘管理"><a href="#磁盘管理" class="headerlink" title="磁盘管理"></a>磁盘管理</h2><h3 id="df命令"><a href="#df命令" class="headerlink" title="df命令"></a>df命令</h3><p>df（英文全拼：disk free）命令用于显示目前在 Linux 系统上的文件系统磁盘使用情况统计。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df [选项]... [FILE]...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项：<code>-h</code>，以更加人性化的单位显示。</li>
+</ul>
+<hr>
+<h3 id="du命令"><a href="#du命令" class="headerlink" title="du命令"></a>du命令</h3><p>du（英文全拼：disk usage）命令用于显示目录或文件的大小。du 会显示指定的目录或文件所占用的磁盘空间。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df [选项]... [FILE]...</span><br><span class="line">du [-ah][--max-depth=&lt;目录层数&gt;][目录或文件]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项：<code>-a</code>，显示目录中个别文件的大小。</li>
+<li>选项：<code>-h</code>，以更加人性化的单位显示。</li>
+<li>选项：<code>--max-depth=&lt;目录层数&gt;</code>，超过指定层数的目录后，予以忽略。</li>
+<li>查看根目录<code>/</code>下各个文件占用情况，<code>du -ah --max-depth=1 /</code>。</li>
+</ul>
+<hr>
+<h3 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls命令</h3><p>ls命令的作用是列出目录下的内容，语法细节如下：</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls [-l -h -a] [Linux路径]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Linux路径：被查看的文件夹，不提供该参数，表示查看当前工作目录。</li>
+<li>-l，表示：以列表（竖向排列）的形式展示内容，并展示更多信息</li>
+<li>-h，表示以易于阅读的形式，列出文件大小，如K、M、G，<code>-h</code>选项必须要搭配<code> -l</code> 一起使用。</li>
+<li>-a，表示：all的意思，即列出全部文件（包含隐藏的文件/文件夹）。在Linux中以<code>.</code>开头的，均是隐藏的。默认不显示出来。</li>
+<li></li>
+</ul>
+<hr>
+<h3 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h3><p>当Linux终端（命令行）打开的时候，会默认以用户的HOME目录作为当前的工作目录，可以通过cd命令，更改当前所在的工作目录。 cd命令来自英文：Change Directory。<br>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd [dirName]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>cd命令无需选项，只有参数，表示要切换到哪个目录下</li>
+<li>cd命令直接执行，不写参数，表示回到用户的HOME目录</li>
+</ul>
+<hr>
+<h3 id="pwd命令"><a href="#pwd命令" class="headerlink" title="pwd命令"></a>pwd命令</h3><p>pwd命令来自：Print Work Directory，命令用于显示工作目录。执行 pwd 指令可立刻得知目前所在的工作目录的绝对路径名称。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd [--help][--version]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>pwd命令，一般无选项，无参数，直接输入pwd即可</li>
+</ul>
+<hr>
+<h3 id="mkdir命令"><a href="#mkdir命令" class="headerlink" title="mkdir命令"></a>mkdir命令</h3><p>mkdir（英文全拼：make directory）命令用于创建目录。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir [-p] dirName</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>参数必填，表示Linux路径，即要创建的文件夹的路径，相对路径或绝对路径均可。</li>
+<li><code>-p</code>选项可选，表示自动创建不存在的父目录，适用于创建连续多层级的目录。如<code>mkdir -p runoob2/test</code>，本例若不加<code>-p</code> 参数，且原本 runoob2 目录不存在，则产生错误。</li>
+</ul>
+<hr>
+<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><h3 id="touch命令"><a href="#touch命令" class="headerlink" title="touch命令"></a>touch命令</h3><p>可通过touch命令创建一个新的空白文件。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch 文件或目录</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>touch命令一般无选项，参数必填，表示要创建的文件路径，相对、绝对、特殊路径符均可以使用。</li>
+</ul>
+<hr>
+<h3 id="cat命令"><a href="#cat命令" class="headerlink" title="cat命令"></a>cat命令</h3><p>cat（英文全拼：concatenate）命令用于连接文件并打印到标准输出设备上。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat fileName</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>cat命令一般无选项，参数必填，参数表示被查看的文件路径，相对、绝对、特殊路径符都可以使用。</li>
+<li>清空 /etc/test.txt 文档内容，<code>cat /dev/null &gt; /etc/test.txt</code>，常用于清空日志文件。</li>
+<li>把textfile1的文档内容加上行号后输入 textfile2 这个文档里，<code>cat -n textfile1 &gt; textfile2</code>。</li>
+<li>把textfile1和textfile2的文档内容加上行号（空白行不加）之后将内容附加 textfile3文档里，<code>cat -b textfile1 textfile2 &gt;&gt; textfile3</code>。</li>
+</ul>
+<hr>
+<h3 id="split命令"><a href="#split命令" class="headerlink" title="split命令"></a>split命令</h3><p>split命令用于将一个文件分割成数个。该指令将大文件分割成较小的文件，在默认情况下将按照每1000行切割成一个小文件。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">split [-&lt;行数&gt;][-b &lt;字节&gt;][-C &lt;字节&gt;][-l &lt;行数&gt;][要切割的文件][输出文件名]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项：<code>-&lt;行数&gt;</code>，指定每多少行切成一个小文件。</li>
+<li>选项：<code>-b&lt;字节&gt;</code>，指定每多少字节切成一个小文件。</li>
+<li>选项：<code>-C&lt;字节&gt;</code>，与参数<code>-b</code>相似，但是在切割时将尽量维持每行的完整性。</li>
+<li>选项：<code>-d</code>，指定数字形式的文件后缀。</li>
+<li>选项：<code>[输出文件名]</code>，设置切割后文件的前置文件名， split会自动在前置文件名后再加上编号。</li>
+<li>拆分大文件<code>1.log</code>，以<code>200m</code>为单位，输出目录为<code>xxx文件夹</code>下，文件以<code>a_数字</code>格式输出，<code>split -d -b 200m 1.log XXX/a_</code>。</li>
+<li>合并文件，<code>cat XXX/a_* &gt; 1.log</code>。</li>
+</ul>
+<hr>
+<h3 id="more命令"><a href="#more命令" class="headerlink" title="more命令"></a>more命令</h3><p>more 命令类似 cat ，不过会以一页一页的形式显示，更方便使用者逐页阅读，而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示，而且还有搜寻字串的功能（与 vi 相似），通过q退出查看 。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">more fileName</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>more命令一般无选项，只有必填参数，参数表示：被查看的文件路径，相对、绝对、特殊路径符都可以使用。</li>
+</ul>
+<hr>
+<h3 id="chmod命令"><a href="#chmod命令" class="headerlink" title="chmod命令"></a>chmod命令</h3><p>chmod（英文全拼：change mode）命令是控制用户对文件的权限的命令。<strong>注意，只有文件、文件夹的所属用户或root用户可以修改。</strong>chmod命令可以使用八进制数来指定权限。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod [-R] mode file...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项：<code>-R</code>，对文件夹内的全部内容应用同样的操作。</li>
+<li>参数：<code>file...</code> ，要设置的文件路径，可包含多个。</li>
+<li>参数：<code>mode</code> ，权限设定字串，格式如下 :<code>[ugoa...][[+-=][rwxX]...][,...]</code>。<ul>
+<li><code>u</code>表示该文件的拥有者，<code>g</code>表示与该文件的拥有者属于同一个群体(group)者，<code>o</code>表示其他以外的人，<code>a</code>表示这三者皆是。</li>
+<li><code>+</code>表示增加权限、<code>-</code>表示取消权限、<code>=</code>表示唯一设定权限。</li>
+<li><code>r</code>表示可读取，<code>w</code>表示可写入，<code>x</code>表示可执行。</li>
+<li>权限也可以用3位数字来代表，第一位数字表示用户权限，第二位表示用户组权限，第三位表示其它用户权限。</li>
+</ul>
+</li>
+<li>为ex1.py文件拥有者增加可执行权限，<code>chmod u+x ex1.py</code>。</li>
+<li>将目前目录下的所有文件与子目录皆设为任何人可读取，<code>chmod -R a+r *</code>。</li>
+<li>为file文件拥有者增加读写可执行权限和其他人可执行权限，<code>chmod ug=rwx,o=x file</code>等效于<code>chmod 771 file</code>。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">权限数字</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>0</code></td>
+<td align="center">无任何权限，即<code>---</code></td>
+</tr>
+<tr>
+<td align="center"><code>1</code></td>
+<td align="center">仅有<code>x</code>权限，即<code>--x</code></td>
+</tr>
+<tr>
+<td align="center"><code>2</code></td>
+<td align="center">仅有<code>w</code>权限，即<code>-w-</code></td>
+</tr>
+<tr>
+<td align="center"><code>3</code></td>
+<td align="center">有<code>w</code>和<code>x</code>权限，即<code>-wx</code></td>
+</tr>
+<tr>
+<td align="center"><code>4</code></td>
+<td align="center">仅有<code>r</code>权限，即<code>r--</code></td>
+</tr>
+<tr>
+<td align="center"><code>5</code></td>
+<td align="center">有<code>r</code>和<code>x</code>权限，即<code>r-x</code></td>
+</tr>
+<tr>
+<td align="center"><code>6</code></td>
+<td align="center">有<code>r</code>和<code>w</code>权限，即<code>rw-</code></td>
+</tr>
+<tr>
+<td align="center"><code>7</code></td>
+<td align="center">有全部权限，即<code>rwx</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="chown命令"><a href="#chown命令" class="headerlink" title="chown命令"></a>chown命令</h3><p>chown（英文全拼：change owner）命令用于设置文件所有者和文件关联组的命令。<strong>普通用户无法修改所属为其它用户或组，所以此命令只适用于root用户执行。</strong></p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown [-R] 用户[:group] file...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项，<code>-R</code>，对文件夹内全部内容应用相同规则。</li>
+<li>选项，用户，修改所属用户。</li>
+<li>选项，用户组，修改所属用户组。</li>
+<li><code>:</code>用于分隔用户和用户组。</li>
+<li>将hello.txt所属用户修改为root，<code>chown root hello.txt</code>。</li>
+<li>将hello.txt所属用户组修改为root，<code>chown :root hello.txt</code>。</li>
+<li>将hello.txt所属用户修改为root，用户组修改为root，<code>chown root:root hello.txt</code>。</li>
+<li>将文件夹test的所属用户修改为root并对文件夹内全部内容应用同样规则。<code>chown -R root test</code>。</li>
+</ul>
+<hr>
+<h3 id="cp命令"><a href="#cp命令" class="headerlink" title="cp命令"></a>cp命令</h3><p>cp（英文全拼：copy）命令主要用于复制文件或目录。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp [-options] 参数1 参数2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-r</code>选项，可选，用于复制文件夹使用，表示递归。</li>
+<li><code>-f</code>选项，可选，覆盖已经存在的目标文件而不给出提示。</li>
+<li>参数1，Linux路径，表示被复制的文件或文件夹。</li>
+<li>参数2，Linux路径，表示要复制去的地方。</li>
+<li>将一个文件夹复制到另一个文件夹下，以下实例 packageA 文件及其任意层的结构会拷贝到 packageB 中，<code>cp -r /home/packageA /home/packageB</code></li>
+<li>将 packageA 下的所有文件（不包含 packageA 文件）拷贝到 packageB 中，<code>cp -r /home/packageA/* /home/cp/packageB/</code></li>
+</ul>
+<hr>
+<h3 id="scp命令"><a href="#scp命令" class="headerlink" title="scp命令"></a>scp命令</h3><p>scp 命令用于Linux之间复制文件和目录。scp 是secure copy的缩写, scp是linux系统下基于ssh登陆进行安全的远程文件拷贝命令。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp [可选参数] 参数1 参数2 </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-r</code>选项，可选，用于复制文件夹使用，表示递归。</li>
+<li><code>-P</code>选项， port是指定数据传输用到的端口号。</li>
+<li>参数1，Linux路径，表示被复制的文件或文件夹。</li>
+<li>参数2，Linux路径，表示要复制去的地方。</li>
+<li>拉取，将异地服务器上/home/lk/目录下所有的文件全部复制到本地的/root目录下，<code>scp -r root@异地服务器ip:/home/lk /root</code>。</li>
+<li>推送，在本地服务器上将/root/lk目录下所有的文件传输到异地的/home/lk/cpfile目录下，<code>scp -r /root/lk root@异地服务器ip:/home/lk/cpfile</code>。</li>
+<li>如果远程服务器防火墙有为scp命令设置了指定的端口，需使用<code>-P</code>参数来设置命令的端口号，<code>scp -P 10001 local_file remote_ip:remote_file</code>。</li>
+<li>参数1或参数2中指定了用户名，命令执行后需再输入密码；若未指定用户名，命令执行后需输入用户名和密码。</li>
+</ul>
+<hr>
+<h3 id="mv命令"><a href="#mv命令" class="headerlink" title="mv命令"></a>mv命令</h3><p>mv（英文全拼：move）命令用来为文件或目录改名、或将文件或目录移入其它位置。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv [options] 参数1 参数2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-b</code>: 当目标文件或目录存在时，在执行覆盖前，会为其创建一个备份。</li>
+<li><code>-f</code>: 如果指定移动的源目录或文件与目标的目录或文件同名，不会询问，直接覆盖旧文件。</li>
+<li>参数1，Linux路径，表示被移动的文件或文件夹。</li>
+<li>参数2，Linux路径，表示要移动去的地方，如果目标不存在，则进行改名，确保目标存在。</li>
+<li>将源文件名 source_file 改为目标文件名 dest_file，效果是仅重命名，<code>mv a/source_file(文件) a/dest_file(文件)</code>。</li>
+<li> 将源文件名 source_file 改为移动到目标文件夹b中并改目标文件名 dest_file，效果是：移动 + 重命名。<code>mv a/source_file(文件) a/b/dest_file(文件)</code>。</li>
+<li>将文件 source_file 移动到目标目录 dest_directory 中，<code>mv source_file(文件) dest_directory(目录)</code>。</li>
+<li>目录名 dest_directory 已存在，将 source_directory 移动到目录名 dest_directory 中；目录名 dest_directory 不存在则 source_directory 改名为目录名 dest_directory，<code>mv source_directory(目录) dest_directory(目录)</code>。</li>
+<li>出错，<code>mv source_directory(目录) dest_file(文件)</code>。</li>
+<li>将 /usr/runoob 下的所有文件和目录移到当前目录下，<code>mv /usr/runoob/* .</code>。</li>
+</ul>
+<hr>
+<h3 id="rm命令"><a href="#rm命令" class="headerlink" title="rm命令"></a>rm命令</h3><p>rm（英文全拼：remove）命令用于删除一个文件或者目录。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm [-options] 参数1 参数2 ...... 参数N</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-r</code>选项用于删除文件夹，将目录及以下之档案亦逐一删除。</li>
+<li><code>-f</code>表示force，强制删除（不会弹出提示确认信息）。</li>
+<li>参数1、参数2、……、参数N 表示要删除的文件或文件夹路径，按照空格隔开。</li>
+<li>参数也支持通配符 <code>*</code>，即匹配任意内容（包含空），用以做模糊匹配。<code>test*</code>，表示匹配任何以test开头的内容，<code>*test</code>，表示匹配任何以test结尾的内容，<code>*test*</code>，表示匹配任何包含test的内容。</li>
+<li>删除当前目录下的所有文件及目录，<code>rm -rf *</code>。</li>
+<li>删除目录 test，不管该目录下是否有子目录或文件，都直接删除，<code>rm -rf test/</code>。</li>
+<li><strong>注意</strong>：以下操作会删除Linux根目录下的所有文件，直接导致服务器瘫痪，<code>rm -rf /*</code>或<code>rm -rf /</code>，删库跑路。</li>
+</ul>
+<hr>
+<h3 id="which命令"><a href="#which命令" class="headerlink" title="which命令"></a>which命令</h3><p>which命令用于查找文件。which指令会在环境变量$PATH设置的目录里查找符合条件的文件。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which [文件...]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>可以通过which命令，查看所使用的一系列命令的程序文件存放在哪里，<code>which bash</code></li>
+</ul>
+<hr>
+<h3 id="find命令"><a href="#find命令" class="headerlink" title="find命令"></a>find命令</h3><p>find 命令用于在指定目录下查找文件和目录。它可以使用不同的选项来过滤和限制查找的结果。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find [path] [expression]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>path 是要查找的目录路径，可以是一个目录或文件名，也可以是多个路径，多个路径之间用空格分隔，如果未指定路径，则默认为当前目录。</li>
+<li>expression 是可选参数，用于指定查找的条件，可以是文件名、文件类型、文件大小等等。<ul>
+<li><code>-name pattern</code>：按文件名查找，支持使用通配符 * 和 ?。</li>
+<li><code>-type type</code>：按文件类型查找，可以是 f（普通文件）、d（目录）、l（符号链接）等。</li>
+<li><code>-size [+-]size[cwbkMG]</code>：按文件大小查找，支持使用 + 或 - 表示大于或小于指定大小，单位可以是 c（字节）、w（字数）、b（块数）、k（KB）、M（MB）或 G（GB）。</li>
+</ul>
+</li>
+<li>查找当前目录下名为 file.txt 的文件，<code>find . -name file.txt</code>。</li>
+<li>将当前目录及其子目录下所有文件后缀为 .c 的文件列出来，<code>find . -name &quot;*.c&quot;</code></li>
+<li>查找 /home 目录下大于 1MB 的文件，<code>find /home -size +1M</code>。</li>
+<li>find指令为找出500M以上的文件，print0和xargs -0配合使用，用来解决文件名中有空格或特殊字符问题。du -m是查看这些文件的大小，并以m为单位显示。最后sort -nr是按照数字反向排序（大的文件在前），<code>find / -size +500M -print0|xargs -0 du -m|sort -nr</code>。</li>
+</ul>
+<hr>
+<h3 id="ln命令"><a href="#ln命令" class="headerlink" title="ln命令"></a>ln命令</h3><p>ln（英文全拼：link files）命令是一个非常重要命令，它的功能是为某一个文件在另外一个位置建立一个同步的链接。</p>
+<p>链接又可分为两种 : 硬链接(hard link)与软链接(symbolic link)，硬链接的意思是一个档案可以有多个名称，而软链接的方式则是产生一个特殊的档案，该档案的内容是指向另一个档案的位置。不论是硬链接或软链接都不会将原本的档案复制一份，只会占用非常少量的磁碟空间。</p>
+<p>若链接的路径存在，则无法创建新链接，需删除之后，才能新建。</p>
+<ul>
+<li>软链接：<ul>
+<li>1.软链接，以路径的形式存在。类似于Windows操作系统中的快捷方式。</li>
+<li>2.软链接可以 跨文件系统 ，硬链接不可以。</li>
+<li>3.软链接可以对一个不存在的文件名进行链接。</li>
+<li>4.软链接可以对目录进行链接。</li>
+</ul>
+</li>
+<li>硬链接：<ul>
+<li>1.硬链接，以文件副本的形式存在。但不占用实际空间。</li>
+<li>2.不允许给目录创建硬链接。</li>
+<li>3.硬链接只有在同一个文件系统中才能创建。<br>语法：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln [-s][源文件或目录][目标文件或目录]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-s</code>选项，创建软连接。</li>
+<li>参数1：被链接的文件或文件夹。</li>
+<li>参数2：要链接去的目的地。</li>
+<li>给文件创建软链接，为a.log文件创建软链接link_a，如果a.log丢失，link_a将失效，<code>ln -s a.log link_a</code>。</li>
+<li>给文件创建硬链接，为b.log创建硬链接ln_b，如果b.log丢失，ln_b仍可访问，b.log与ln_b的各项属性相同，<code>ln b.log ln_b</code>。</li>
+</ul>
+<hr>
+<h2 id="文档编辑"><a href="#文档编辑" class="headerlink" title="文档编辑"></a>文档编辑</h2><h3 id="grep命令"><a href="#grep命令" class="headerlink" title="grep命令"></a>grep命令</h3><p>grep (global regular expression) 命令用于查找文件里符合条件的字符串或正则表达式。</p>
+<p>grep 指令用于查找内容包含指定的范本样式的文件，如果发现某文件的内容符合所指定的范本样式，预设 grep 指令会把含有范本样式的那一列显示出来。若不指定任何文件名称，或是所给予的文件名为 -，则 grep 指令会从标准输入设备读取数据。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep [options] pattern [files]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-n</code>选项，可选，表示在结果中显示匹配的行的行号。</li>
+<li><code>pattern</code>，关键字，必填， 表示要查找的字符串或正则表达式，带有空格或其它特殊符号，建议使用””将关键字包围起来。</li>
+<li><code>files</code>， 表示要查找的文件名，可以同时查找多个文件，如果省略 files 参数，则默认从标准输入中读取数据。</li>
+<li>在文件 file.txt 中查找字符串 “hello”，并打印匹配的行，<code>grep hello file.txt</code>。</li>
+<li>在文件夹 dir 中递归查找所有文件中匹配正则表达式 “pattern” 的行，并打印匹配行所在的文件名和行号，<code>grep -r -n pattern dir/</code>。</li>
+<li>在当前目录中，查找后缀有 file 字样的文件中包含 test 字符串的文件，并打印出该字符串的行，<code>grep test *file </code>。</li>
+</ul>
+<hr>
+<h3 id="wc命令"><a href="#wc命令" class="headerlink" title="wc命令"></a>wc命令</h3><p>wc命令做数量统计，可以通过wc命令统计文件的行数、单词数量等。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc [-cmlw][文件...]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-c</code>选项，统计bytes数量。</li>
+<li><code>-m</code>选项，统计字符数量。</li>
+<li><code>-l</code>选项，统计行数。</li>
+<li><code>-w</code>选项，统计单词数量。</li>
+<li>参数，文件路径，被统计的文件，可作为内容输入端口，多文件按照空格隔开。</li>
+<li>默认的情况下，wc将计算指定文件的行数、字数，以及字节数并依次显示，<code>wc testfile</code>。</li>
+<li>统计字节数，<code>wc -c testfile</code>，其他同理。</li>
+<li>统计当前目录下文件的个数（不包括目录），<code>ls -l | grep &quot;^-&quot; | wc -l</code></li>
+<li>查看某目录下文件夹(目录)的个数（包括子目录），<code>ls -lR | grep &quot;^d&quot; | wc -l</code></li>
+<li>统计文件中带有it关键字的有几行，<code>cat test.txt | grep it | wc -l</code></li>
+<li>统计文件中带有it关键字的结果中有多少个单词，<code>cat test.txt | grep it | wc -w</code></li>
+</ul>
+<hr>
+<h3 id="echo命令"><a href="#echo命令" class="headerlink" title="echo命令"></a>echo命令</h3><p>可以使用echo命令在命令行内输出指定内容。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 输出的内容</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>无需选项，只有一个参数，表示要输出的内容，复杂内容可以用””包围。</li>
+<li>普通字符串<ul>
+<li><code>echo &quot;It is a test&quot;</code></li>
+<li><code>echo It is a test</code></li>
+<li>这里的双引号完全可以省略，两条语句效果一致。</li>
+</ul>
+</li>
+<li>显示转义字符<ul>
+<li><code>echo &quot;\&quot;It is a test\&quot;&quot;</code>输出结果为”It is a test”</li>
+</ul>
+</li>
+<li>显示命令执行结果<ul>
+<li><code>echo `pwd` </code></li>
+<li>将命令用反引号<code>`</code>将其包围,被包围的内容，会被作为命令执行，而非普通字符，此处输出的是当前工作目录。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="重定向符"><a href="#重定向符" class="headerlink" title="重定向符"></a>重定向符</h3><p>功能：将符号左边的结果，输出到右边指定的文件中去。</p>
+<ul>
+<li><code>&gt;</code>，表示覆盖输出。</li>
+<li><code>&gt;&gt;</code>，表示追加输出。</li>
+<li><code>echo “Hello Linux” &gt; it.txt</code>，使用<code>&gt;</code>覆盖原有内容。</li>
+<li><code>echo Hello World &gt;&gt; it.txt</code>，再次执行，使用<code>&gt;&gt;</code>追加新内容。</li>
+</ul>
+<hr>
+<h2 id="备份压缩"><a href="#备份压缩" class="headerlink" title="备份压缩"></a>备份压缩</h2><p>Linux和Mac系统常用有2种压缩格式，后缀名分别是：</p>
+<ul>
+<li><code>.tar</code>，称之为tarball，归档文件，即简单的将文件组装到一个.tar的文件内，并没有太多文件体积的减少，仅仅是简单的封装。</li>
+<li><code>.gz</code>，也常见为.tar.gz，gzip格式压缩文件，即使用gzip压缩算法将文件压缩到一个文件内，可以极大的减少压缩后的体积</li>
+</ul>
+<h3 id="tar命令"><a href="#tar命令" class="headerlink" title="tar命令"></a>tar命令</h3><p>tar（英文全拼：tape archive ）命令用于备份文件。tar 是用来建立，还原备份文件的工具程序，它可以加入，解开备份文件内的文件。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar [-c -v -x -f -z -C] 参数1 参数2 ... 参数n</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项<code>-c</code>，创建压缩文件，用于压缩模式。</li>
+<li>选项<code>-v</code>，显示压缩、解压过程，用于查看进度。</li>
+<li>选项<code>-x</code>，解压模式。</li>
+<li>选项<code>-f</code>，要创建的文件，或要解压的文件，<code>-f</code>选项<strong>必须</strong>在所有选项中位置处于<strong>最后一个</strong>。</li>
+<li>选项<code>-z</code>，gzip模式，不使用<code>-z</code>就是普通的tarball格式。</li>
+<li>选项<code>-C</code>，选择解压的目的地，用于解压模式，<code>-C</code>选项单独使用，和解压所需的其它参数分开。</li>
+<li>tar压缩常用组合为：<ul>
+<li>将1.txt 2.txt 3.txt 压缩到test.tar文件内，<code>tar -cvf test.tar 1.txt 2.txt 3.txt</code>。</li>
+<li>将1.txt 2.txt 3.txt 压缩到test.tar.gz文件内，使用gzip模式，<code>tar -zcvf test.tar.gz 1.txt 2.txt 3.txt</code>。</li>
+</ul>
+</li>
+<li>tar解压常用组合为：<ul>
+<li>解压test.tar，将文件解压至当前目录，<code>tar -xvf test.tar</code>。</li>
+<li>解压test.tar，将文件解压至指定目录（/home/soft），<code>tar -xvf test.tar -C /home/soft</code>。</li>
+<li>以Gzip模式解压test.tar.gz，将文件解压至指定目录（/home/soft），<code>tar -zxvf test.tar.gz -C /home/soft</code>。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="zip命令"><a href="#zip命令" class="headerlink" title="zip命令"></a>zip命令</h3><p>zip 命令用于压缩文件。zip 是个使用广泛的压缩程序，压缩后的文件后缀名为 .zip。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zip [-r] 参数1 参数2 ... 参数n</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项<code>-r</code>，递归处理，将指定目录下的所有文件和子目录一并处理，被压缩的包含文件夹的时候，需要使用<code>-r</code>选项。</li>
+<li>将a.txt b.txt c.txt 压缩到test.zip文件内，<code>zip test.zip a.txt b.txt c.txt</code>。</li>
+<li>将test、soft两个文件夹和a.txt文件，压缩到test.zip文件内，<code>zip -r test.zip test soft a.txt</code>。</li>
+</ul>
+<hr>
+<h3 id="unzip命令"><a href="#unzip命令" class="headerlink" title="unzip命令"></a>unzip命令</h3><p>unzip命令用于解压缩zip文件。unzip为.zip压缩文件的解压缩程序。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unzip [-d] 参数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项<code>-d</code>，指定要解压去的位置，同<code>tar</code>的<code>-C</code>选项。</li>
+<li>参数，被解压的zip压缩包文件。</li>
+<li>将test.zip解压到当前目录，<code>unzip test.zip</code>。</li>
+<li>将test.zip解压到指定文件夹内（/home/soft），<code>unzip test.zip -d /home/soft</code>。</li>
+</ul>
+<hr>
+<h2 id="系统管理"><a href="#系统管理" class="headerlink" title="系统管理"></a>系统管理</h2><h3 id="su命令"><a href="#su命令" class="headerlink" title="su命令"></a>su命令</h3><p>su(Switch User)命令就是用于账户切换的系统命令。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su [-] [USER]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-</code>符号是可选的，表示是否在切换用户后加载环境变量，建议带上。</li>
+<li>参数：<code>USER</code>，用户名，表示要切换的用户，用户名也可以省略，省略表示切换到root。</li>
+<li>切换用户后，可以通过<code>exit</code>命令退回上一个用户，也可以使用快捷键：<code>ctrl + d</code>。</li>
+<li>使用普通用户，切换到其它用户需要输入密码，如切换到root用户。</li>
+<li>使用root用户切换到其它用户，无需密码，可以直接切换。</li>
+</ul>
+<hr>
+<h3 id="sudo命令"><a href="#sudo命令" class="headerlink" title="sudo命令"></a>sudo命令</h3><p>sudo命令为普通的命令授权，临时以root身份执行。在其它命令之前，带上sudo，即可为这一条命令临时赋予root授权。但是并不是所有的用户，都有权利使用sudo，需要为普通用户配置sudo认证。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo command</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>为普通用户配置sudo认证：<ul>
+<li>切换到root用户，执行<code>visudo</code>命令，会自动通过vi编辑器打开：<code>/etc/sudoers</code></li>
+<li>在文件的最后添加：<code>用户名 ALL=ALL NOPASSWD:ALL</code>,其中最后的NOPASSWD:ALL 表示使用sudo命令，无需输入密码，通过 wq 保存。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="exit命令"><a href="#exit命令" class="headerlink" title="exit命令"></a>exit命令</h3><p>exit命令用于退出目前的shell。执行exit可使shell以指定的状态值退出。若不设置状态值参数，则shell以预设值退出。状态值0代表执行成功，其他值代表执行失败。exit也可用在script，离开正在执行的script，回到shell。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit [状态值]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>退出终端，<code>exit</code>。</li>
+</ul>
+<hr>
+<h3 id="whoami"><a href="#whoami" class="headerlink" title="whoami"></a>whoami</h3><p>whoami命令用于显示自身用户名称。显示自身的用户名称，本指令相当于执行<code>id -un</code>指令。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whoami</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>显示用户名，<code>whoami</code>。</li>
+</ul>
+<hr>
+<h3 id="useradd命令"><a href="#useradd命令" class="headerlink" title="useradd命令"></a>useradd命令</h3><p>useradd 命令用于建立用户帐号。使用 <code>useradd</code>指令所建立的帐号，实际上是保存在<code>/etc/passwd</code> 文本文件中。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd [-g -d] 用户名</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项：<code>-g</code>，指定用户的组，不指定<code>-g</code>，会创建同名组并自动加入，指定<code>-g</code>需要组已经存在，如已存在同名组，必须使用<code>-g</code>。</li>
+<li>选项：<code>-d</code>，指定用户HOME路径，不指定，HOME目录默认在：<code>/home/用户名</code>。</li>
+<li>新建了一个用户gem，它属于group用户组，同时又属于adm和root用户组，其中group用户组是其主组，为登录名gem产生一个主目录，/home/gem。<code>useradd –d  /home/gem -g group –G adm,root gem</code>。</li>
+</ul>
+<hr>
+<h3 id="userdel命令"><a href="#userdel命令" class="headerlink" title="userdel命令"></a>userdel命令</h3><p>userdel命令用于删除用户帐号。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel [-r] 用户名</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项：<code>-r</code>，删除用户的主目录，不使用<code>-r</code>，删除用户时，用户的主目录保留。</li>
+</ul>
+<hr>
+<h3 id="usermod命令"><a href="#usermod命令" class="headerlink" title="usermod命令"></a>usermod命令</h3><p>usermod命令用于修改用户帐号。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod 选项 用户名</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>常用的选项包括<code>-c</code>,<code>-d</code>,<code>-g</code>,<code>-G</code>等，这些选项的意义与<code>useradd</code>命令中的选项一样，可以为用户指定新的资源值。</li>
+<li>将用户sam的主目录改为/home/z，用户组改为developer，<code>usermod -d /home/z –g developer sam</code>。</li>
+</ul>
+<hr>
+<h3 id="id命令"><a href="#id命令" class="headerlink" title="id命令"></a>id命令</h3><p>id命令用于显示用户的ID，以及所属群组的ID。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id [-gGnru] [用户名]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项<code>-g</code>，显示用户所属群组的ID。</li>
+<li>选项<code>-G</code>，显示用户所属附加群组的ID。</li>
+<li>选项<code>-n</code>，显示用户，所属群组或附加群组的名称。</li>
+<li>选项<code>-u</code>，显示用户ID。</li>
+<li>参数：用户名，被查看的用户，如果不提供则查看自身。</li>
+<li>显示所有群组的 ID，<code>id -G</code>。</li>
+<li>显示指定用户信息，<code>id newlinux</code>。</li>
+</ul>
+<hr>
+<h3 id="groupadd命令"><a href="#groupadd命令" class="headerlink" title="groupadd命令"></a>groupadd命令</h3><p>groupadd 命令用于创建一个新的工作组，新工作组的信息将被添加到系统文件中。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupadd [-g gid] group</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项<code>-g</code>，指定新建工作组的 id。</li>
+<li>参数：<code>group</code>，创建的工作组名。</li>
+<li>向系统中增加了一个新组group1，新组的组标识号是在当前已有的最大组标识号的基础上加1，<code>groupadd group1</code>。</li>
+<li>向系统中增加了一个新组group2，同时指定新组的组标识号是101，<code>groupadd -g 101 group2</code>。</li>
+</ul>
+<hr>
+<h3 id="groupdel命令"><a href="#groupdel命令" class="headerlink" title="groupdel命令"></a>groupdel命令</h3><p>groupdel命令用于删除群组。<br>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupdel [群组名称]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>从系统中删除组group1，<code>groupdel group1</code>。</li>
+</ul>
+<hr>
+<h3 id="groupmod命令"><a href="#groupmod命令" class="headerlink" title="groupmod命令"></a>groupmod命令</h3><p>groupmod命令用于更改群组识别码或名称。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupmod [-g &lt;群组识别码&gt;][&lt;新群组名称&gt;][群组名称]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项<code>-g</code>，指定修改后的工作组 id。</li>
+<li>参数：新群组名称，设置欲使用的群组名称。</li>
+<li>参数：群组名称，要修改的群组名称。</li>
+<li>将组group2的组标识号修改为102，<code>groupmod -g 102 group2</code>。</li>
+<li>将组group2的标识号改为10000，组名修改为group3，<code>groupmod –g 10000 -n group3 group2</code>。</li>
+</ul>
+<hr>
+<h3 id="newgrp-命令"><a href="#newgrp-命令" class="headerlink" title="newgrp 命令"></a>newgrp 命令</h3><p>newgrp 命令用于登入另一个群组。如果一个用户同时属于多个用户组，那么用户可以在用户组之间切换，以便具有其他用户组的权限，<strong>前提条件是其他用户组确实是该用户的主组或附加组。</strong></p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newgrp [群组名称]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将当前用户切换到root用户组，<code>newgrp root</code>。</li>
+</ul>
+<hr>
+<h3 id="getent命令"><a href="#getent命令" class="headerlink" title="getent命令"></a>getent命令</h3><p>getent(get entries)命令用来查看系统的数据库中的相关记录。其功能是用于查看系统数据库中的记录信息。即便这些数据库不是本地的，类似于LDAP或者NIS也可以使用getent命令进行查看。<strong>可用于查看用户信息、域名信息等</strong>。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getent database [参数]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>支持的database数据库： group， hosts，  networks， passwd，services等，支持的数据库被配置在<code>/etc/nsswitch.conf</code>中。</li>
+<li>查看本地的密码文件（/etc/passwd）中所有用户信息，<code>getent passwd</code>，返回的共有7份信息，分别是：<code>用户名:密码(x):用户ID:组ID:描述信息:HOME目录:执行终端</code>。</li>
+<li>查看本地的密码文件（/etc/passwd）中包含的指定用户信息，<code>getent passwd newlinux</code>。</li>
+<li>查看本地的组文件（/etc/group）中所有组信息，<code>getent group</code>，返回的共包含3份信息，分别是：<code>组名称:组认证(显示为x):组ID</code>。</li>
+<li>查看本地的组文件（/etc/group）中包含的指定组信息，<code>getent root</code>。</li>
+<li>查看本地的主机文件（/etc/hosts）中包含的指定域名信息：<code>getent hosts xxx.com</code>。</li>
+<li>获取所有服务的列表：<code>getent services</code>。</li>
+<li>获取指定服务的列表：<code>getent services 80</code>。</li>
+</ul>
+<hr>
+<h3 id="free命令"><a href="#free命令" class="headerlink" title="free命令"></a>free命令</h3><p>free命令用于显示内存状态。free指令会显示内存的使用情况，包括实体内存，虚拟的交换文件内存，共享内存区段，以及系统核心使用的缓冲区等。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free [-h]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项：<code>-h</code>，以合适的单位显示内存使用情况。</li>
+<li>百分比查内存占用率，<code>free | grep Mem | awk &#39;&#123;print $3/$2 * 100.0&#125;&#39;</code>。</li>
+</ul>
+<hr>
+<h3 id="ps命令"><a href="#ps命令" class="headerlink" title="ps命令"></a>ps命令</h3><p>ps（英文全拼：process status）命令用于显示当前进程的状态。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps [-A -e -f]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项：<code>-A</code>，列出所有的进程，显示部分信息<code>PID、TTY、TIME、CMD</code>。</li>
+<li>选项：<code>-e</code>，显示出全部的进程。</li>
+<li>选项：<code>-f</code>，以完全格式化的形式展示信息（展示全部信息）。</li>
+<li>显示所有进程信息，连同命令行， <code>ps -ef</code>。</li>
+<li>查找指定进程格式，<code>ps -ef | grep 进程关键字</code>，进程关键字不仅仅过滤名称，进程号，用户ID，端口等，都可以被grep过滤。</li>
+<li>结果列表显示从左到右分别是：<ul>
+<li><code>UID</code>：进程所属的用户ID。</li>
+<li><code>PID</code>：进程的进程号ID。</li>
+<li><code>PPID</code>：进程的父ID（启动此进程的其它进程）。</li>
+<li><code>C</code>：此进程的CPU占用率（百分比）。</li>
+<li><code>STIME</code>：进程的启动时间。</li>
+<li><code>TTY</code>：启动此进程的终端序号，如显示?，表示非终端启动。</li>
+<li><code>TIME</code>：进程占用CPU的时间。</li>
+<li><code>CMD</code>：进程对应的名称或启动路径或启动命令。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="kill命令"><a href="#kill命令" class="headerlink" title="kill命令"></a>kill命令</h3><p>kill命令用于删除执行中的程序或工作。<br>kill 可将指定的信息送至程序。预设的信息为<code>SIGTERM(15)</code>，可将指定程序终止。若仍无法终止该程序，可使用<code>SIGKILL(9)</code>信息尝试强制删除程序。程序或工作的编号可利用<code>ps</code>指令或<code>jobs</code>指令查看。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill [-s &lt;信息名称或编号&gt;][程序]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项：<code>-s &lt;信息名称或编号&gt;</code>，指定要送出的信息。</li>
+<li>参数：[程序] ，[程序]可以是程序的PID或是PGID，也可以是工作编号。</li>
+<li>使用 <code>kill -l</code>命令列出所有可用信号。最常用的信号是：<ul>
+<li><code>1(HUP)</code>：重新加载进程。</li>
+<li><code>9(KILL)</code>：杀死一个进程。</li>
+<li><code>15(TERM)</code>：正常停止一个进程。</li>
+</ul>
+</li>
+<li>强制杀死进程号10101，<code>kill -KILL 10101</code>效果等同于<code>kill -9 10101</code>。</li>
+<li>杀死指定用户所有进程:<ul>
+<li>方法一 过滤出newlinux用户进程，<code>kill -9 $(ps -ef | grep newlinux)</code>。</li>
+<li>方法二，<code>kill -u newlinux</code>。 </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="top命令"><a href="#top命令" class="headerlink" title="top命令"></a>top命令</h3><p>top命令用于实时显示 process 的动态，可查看CPU、内存使用情况，默认每5秒刷新一次。直接输入top即可，按<code>q</code>或<code>ctrl + c</code>退出。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top [-] [d delay] [q] [c] [S] [s] [i] [n] [b]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项<code>-p</code>，只显示某个进程的信息。</li>
+<li>选项<code>-d</code>，设置刷新时间，默认是5s。</li>
+<li>选项<code>-c</code>，显示产生进程的完整命令，默认是进程名。</li>
+<li>选项<code>-n</code>，指定刷新次数，比如top -n 3：刷新输出3次后退出。</li>
+<li>选项<code>-b</code>，以非交互非全屏模式运行，以批次的方式执行top，一般配合<code>-n</code>指定输出几次统计信息，将输出重定向到指定文件，比如<code>top -b -n 3 &gt; /tmp/top.tmp</code>。</li>
+<li>选项<code>-i</code>，不显示任何闲置（idle）或无用（zombie）的进程。</li>
+<li>选项<code>-u</code>，查找特定用户启动的进程。</li>
+</ul>
+<p>top命令内容详解：</p>
+<img src="/2023/02/01/6348/image-20230410173914680.png" class="" title="top命令结果展示">
+
+<ul>
+<li><p>第一行：</p>
+<ul>
+<li><code>top</code>：命令名称</li>
+<li><code>17:02:25</code>：当前系统时间</li>
+<li><code>up 1：14</code>：启动了1小时14分钟</li>
+<li><code>2 users</code>：2个用户登录</li>
+<li><code>load average</code>：1、5、15分钟负载<ul>
+<li><code>load average：0.34,0.30,0.32</code>：1分钟平均负载0.34，5分钟平均负载0.30，15分钟负载0.32</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>第二行：描述的是进程的相关信息</p>
+<ul>
+<li><code>Tasks</code>：任务<ul>
+<li><code>168 total</code>：168个进程</li>
+<li><code>1 running</code>：1个进程子在运行</li>
+<li><code>167 sleeping</code>：167个进程睡眠</li>
+<li><code>0 stopped</code>：0个停止进程</li>
+<li><code>0 zombie</code>：0个僵尸进程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>第三行：描述的是CPU的相关信息</p>
+<ul>
+<li><code>%Cpu(s)</code>：CPU使用率<ul>
+<li><code>us</code>：用户CPU使用率</li>
+<li><code>sy</code>：系统CPU使用率</li>
+<li><code>ni</code>：高优先级进程占用CPU时间百分比</li>
+<li><code>id</code>：空闲CPU率</li>
+<li><code>wa</code>：IO等待CPU占用率</li>
+<li><code>hi</code>：CPU硬件中断率</li>
+<li><code>si</code>：CPU软件中断率</li>
+<li><code>st</code>：强制等待占用CPU率</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>第四、五行：描述的是内存的相关信息</p>
+<ul>
+<li><code>Kib Mem</code>：物理内存，<ul>
+<li>`total：总量</li>
+<li><code>free</code>：空闲</li>
+<li><code>used</code>：使用</li>
+<li><code>buff/cache</code>：buff和cache占用</li>
+</ul>
+</li>
+<li>`KibSwap：虚拟内存（交换空间）<ul>
+<li><code>total</code>：总量</li>
+<li><code>free</code>：空闲</li>
+<li><code>used</code>：使用</li>
+<li><code>buff/cache</code>：buff和cache占用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>PID</code>，进程id。</p>
+</li>
+<li><p><code>USER</code>，进程所属用户。</p>
+</li>
+<li><p><code>PR</code>，进程优先级，越小越高。</p>
+</li>
+<li><p><code>NI</code>，负值表示高优先级，正表示低优先级。</p>
+</li>
+<li><p><code>VIRT</code>，进程使用虚拟内存，单位KB。</p>
+</li>
+<li><p><code>RES</code>，进程使用物理内存，单位KB。</p>
+</li>
+<li><p><code>SHR</code>，进程使用共享内存，单位KB。</p>
+</li>
+<li><p><code>S</code>，进程状态（S休眠，R运行，Z僵死状态，N负数优先级，I空闲状态）。</p>
+</li>
+<li><p><code>%CPU</code>，进程占用CPU率。</p>
+</li>
+<li><p><code>%MEM</code>，进程占用内存率。</p>
+</li>
+<li><p><code>TIME+</code>，进程使用CPU时间总计，单位10毫秒。</p>
+</li>
+<li><p><code>COMMAND</code>，进程的命令或名称或程序文件路径。</p>
+</li>
+</ul>
+<p>当top以交互式运行（非-b选项启动），可以用以下交互式命令进行控制：</p>
+<table>
+<thead>
+<tr>
+<th align="center">按键</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>h</code></td>
+<td align="center">会显示帮助画面</td>
+</tr>
+<tr>
+<td align="center"><code>c</code></td>
+<td align="center">会显示产生进程的完整命令，等同于-c参数，再次按下c键，变为默认展示</td>
+</tr>
+<tr>
+<td align="center"><code>f</code></td>
+<td align="center">可以选择需要展示的项目</td>
+</tr>
+<tr>
+<td align="center"><code>M</code></td>
+<td align="center">根据驻留内存大小（RES）排序</td>
+</tr>
+<tr>
+<td align="center"><code>P</code></td>
+<td align="center">根据CPU使用百分比大小进行排序</td>
+</tr>
+<tr>
+<td align="center"><code>T</code></td>
+<td align="center">根据时间/累计时间进行排序</td>
+</tr>
+<tr>
+<td align="center"><code>E</code></td>
+<td align="center">切换顶部内存显示单位</td>
+</tr>
+<tr>
+<td align="center"><code>e</code></td>
+<td align="center">切换进程内存显示单位</td>
+</tr>
+<tr>
+<td align="center"><code>l</code></td>
+<td align="center">切换显示平均负载和启动时间信息</td>
+</tr>
+<tr>
+<td align="center"><code>i</code></td>
+<td align="center">不显示闲置或无用的进程，等同于-i参数，再次按下，变为默认显示</td>
+</tr>
+<tr>
+<td align="center"><code>t</code></td>
+<td align="center">切换显示CPU状态信息</td>
+</tr>
+<tr>
+<td align="center"><code>m</code></td>
+<td align="center">切换显示内存信息</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="systemctl命令"><a href="#systemctl命令" class="headerlink" title="systemctl命令"></a>systemctl命令</h3><p>systemctl命令是一个系统管理守护进程、工具和库的集合，用于取代<code>System V</code>、<code>service</code>和<code>chkconfig</code>命令，初始进程主要负责控制systemd系统和服务管理器。该命令主要分为：查询或发送控制命令给systemd服务，管理单元服务的命令，服务文件的相关命令，任务、环境、快照相关命令，systemd服务的配置重载，系统开机关机相关的命令。</p>
+<p>Linux系统很多软件（内置或第三方）均支持使用<code>systemctl</code>命令控制：启动、停止、开机自启，能够被systemctl管理的软件，一般也称之为：服务。</p>
+<p><code>systemctl</code>命令管理的服务在<code> /usr/lib/systemd/system</code>查看。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl [start | stop | restart | status | enable | disable] 服务名</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项<code>start</code>，启动。</li>
+<li>选项<code>stop</code>，关闭。</li>
+<li>选项<code>status</code>，查看状态。</li>
+<li>选项<code>enable</code>，开启开机自启。</li>
+<li>选项<code>disable</code>，关闭开机自启。</li>
+<li>列出所有可用单元 ，grep可以进行过滤，<code>systemctl list-unit-files[ | grep 服务名]</code>。</li>
+</ul>
+<hr>
+<h3 id="date命令"><a href="#date命令" class="headerlink" title="date命令"></a>date命令</h3><p>date命令可以用来显示或设定系统的日期与时间。当以root身份更改了系统时间之后，记得以 <code>clock -w</code>来将系统时间写入 CMOS 中，这样下次重新开机时系统时间才会持续保持最新的正确值。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date [-d datestr] [-s datestr] [+格式化字符串]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-d</code>按照给定的字符串显示日期，字符串不能是<code>&#39;now&#39;</code>，一般用于日期计算。</li>
+<li><code>-s</code>根据字符串设置系统时间。</li>
+<li>参数：格式化字符串：通过特定的字符串标记，来控制显示的日期格式。<ul>
+<li><code>%Y</code>，年。</li>
+<li><code>%y</code>，年份后两位数字 (00..99)。</li>
+<li><code>%m</code>，月份 (01..12)。</li>
+<li><code>%d</code>，日 (01..31)。</li>
+<li><code>%H</code>，小时 (00..23)。</li>
+<li><code>%M</code>，分钟 (00..59)。</li>
+<li><code>%S</code>，秒 (00..60)。</li>
+<li><code>%s</code>，自 1970-01-01 00:00:00 UTC 到现在的秒数。</li>
+</ul>
+</li>
+<li>使用date命令本体，无选项，直接查看时间，<code>date</code>，输出结果为<code>Tue May 24 00:00:00 CST</code> 2022。</li>
+<li>格式化输出，<code>date +&quot;%Y-%m-%d&quot;</code>，输出结果为<code>2077-02-07</code>。</li>
+<li>时间格式转换，<code>date -d &quot;2009-12-12&quot; +&quot;%Y/%m/%d %H:%M.%S&quot;</code>，输出结果为<code>2009/12/12 00:00.00</code>。</li>
+<li> 输出昨天日期，<code>date -d &quot;1 day ago&quot; +&quot;%Y-%m-%d&quot;</code>，输出结果为<code>2077-02-06</code>。</li>
+<li>输出 2 秒后的时间，<code>date -d &quot;2 second&quot; +&quot;%Y-%m-%d %H:%M.%S&quot;</code>，输出结果为<code>2012-11-20 14:21.31</code>。</li>
+<li>设置当前时间，只有root权限才能设置，其他只能查看，<code>date -s</code>。</li>
+<li>设置日期为20770207，这样会把具体时间设置成00:00:00，<code>date -s 20770207</code>。</li>
+<li>设置具体时间，不会对日期做更改，<code>date -s 01:01:01</code>。</li>
+<li>设置全部时间。<ul>
+<li><code>date -s &quot;01:01:01 2012-05-23&quot;</code>。</li>
+<li><code>date -s &quot;01:01:01 20120523&quot;</code>。</li>
+<li><code>date -s &quot;2012-05-23 01:01:01&quot;</code>。</li>
+<li><code>date -s &quot;20120523 01:01:01&quot;</code>。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="网络通讯"><a href="#网络通讯" class="headerlink" title="网络通讯"></a>网络通讯</h2><h3 id="ifconfig命令"><a href="#ifconfig命令" class="headerlink" title="ifconfig命令"></a>ifconfig命令</h3><p>ifconfig命令用于显示或设置网络设备。ifconfig可设置网络设备的状态，或是显示目前的设置。如无法使用ifconfig命令，可以安装：<code>yum -y install net-tools</code>。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig [网络设备][down up][&lt;hw&lt;网络设备类型&gt;&lt;硬件地址&gt;][IP地址]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>显示网络设备信息，<code>ifconfig</code>。</li>
+<li>关闭指定网卡，<code>ifconfig eth0 down</code>。</li>
+<li>启动指定网卡，<code>ifconfig eth0 up</code>。</li>
+<li>关闭网卡并修改MAC地址，<code>ifconfig eth1 hw ether 00:1D:1C:1D:1E</code>,修改成功之后启动该网卡。</li>
+<li>给eth0网卡配置IP地址，<code>ifconfig eth0 192.168.1.117</code>。</li>
+<li>给eth0网卡配置IP地址，配置子网掩码,，配置广播地址，<code>ifconfig eth0 192.168.1.117 netmask 255.255.255.0 broadcast 192.168.1.255</code>。</li>
+</ul>
+<hr>
+<h3 id="ping-命令"><a href="#ping-命令" class="headerlink" title="ping 命令"></a>ping 命令</h3><p>ping 命令用于检测主机。执行 ping 指令会使用 ICMP 传输协议，发出要求回应的信息，若远端主机的网络功能没有问题，就会回应该信息，因而得知该主机运作正常。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ping [-c&lt;完成次数&gt;][主机名称或IP地址]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项：<code>-c</code>，检查的次数，不使用<code>-c</code>选项，将无限次数持续检查。</li>
+<li>参数：ip或主机名，被检查的服务器的ip地址或主机名地址。</li>
+<li>检查到127.0.0.1是否联通，并检查3次，<code>ping -c 127.0.0.1</code>。</li>
+</ul>
+<hr>
+<h3 id="wget命令"><a href="#wget命令" class="headerlink" title="wget命令"></a>wget命令</h3><p>wget是非交互式的文件下载器，可以在命令行内下载网络文件。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wegt [-b] url</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项：<code>-b</code>，可选，后台下载，会将日志写入到当前工作目录的wget-log文件，通过tail命令可以监控后台下载进度：<code>tail -f wget-log</code>。</li>
+<li>参数：<code>url</code>，下载链接。</li>
+<li>通过wegt后台下载软件安装包，<code>wegt -b http://xxx.xxx.xxx/xxx.tar.gz</code>。</li>
+<li>无论下载是否完成，都会生成要下载的文件，如果下载未完成，请及时清理未完成的不可用文件。</li>
+</ul>
+<hr>
+<h3 id="curl命令"><a href="#curl命令" class="headerlink" title="curl命令"></a>curl命令</h3><p>curl可以发送http网络请求，可用于：下载文件、获取信息等。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl [-O] url</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项：<code>-O</code>，用于下载文件，当url是下载链接时，可以使用此选项保存文件。</li>
+<li>参数：<code>url</code>，要发起请求的网络地址。</li>
+<li>curl命令行下直接获取当前IP信息，向cip.cc发起网络请求，<code>curl cip.cc</code>。</li>
+<li>通过curl下载软件安装包，<code>curl -O http://xxx.xxx.xxx/xxx.tar.gz</code>。</li>
+</ul>
+<hr>
+<h3 id="netstat命令"><a href="#netstat命令" class="headerlink" title="netstat命令"></a>netstat命令</h3><p>netstat 命令用于显示网络状态。利用netstat指令可得知整个Linux系统的网络情况。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat [-anptu]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项：<code>-a</code>，显示所有连线中的Socket。</li>
+<li>选项：<code>-n</code>，直接使用IP地址，而不通过域名服务器。</li>
+<li>选项：<code>-p</code>，显示正在使用Socket的程序识别码和程序名称。</li>
+<li>选项：<code>-t</code>，显示TCP传输协议的连线状况。</li>
+<li>选项：<code>-u</code>，显示UDP传输协议的连线状况。</li>
+<li>查看本机指定端口号的占用情况，<code>netstat -anp | grep 端口号</code>。</li>
+<li>Linux系统可以支持65535个端口，这6万多个端口分为3类进行使用：<ul>
+<li>公认端口：1~1023，用于系统内置或常用知名软件绑定使用，如SSH服务的22端口，HTTPS服务的443端口。</li>
+<li>注册端口：1024~49151，用于松散绑定使用（用户自定义）。</li>
+<li>动态端口：49152~65535，用于临时使用（多用于出口）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><h3 id="tail命令"><a href="#tail命令" class="headerlink" title="tail命令"></a>tail命令</h3><p>tail 命令可用于查看文件的内容，有一个常用的参数 -f 常用于查阅正在改变的日志文件。<br><code>tail -f filename</code>会把 filename 文件里的最尾部的内容显示在屏幕上，并且不断刷新，只要 filename 更新就可以看到最新的文件内容。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail [参数] [文件] </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-n&lt;行数&gt;</code>选项， 显示文件的尾部 n 行内容。</li>
+<li><code>-f</code> 选项，循环读取。</li>
+<li>显示 notes.log 文件的最后 10 行，<code>tail notes.log</code>，不使用<code>fn</code>参数，默认显示最后 10 行。</li>
+<li>查看notes.log文件的尾部3行：<code>tail -3 notes.log</code>。</li>
+<li>实时查看notes.log文件末尾100行的内容，<code>tail -fn 100 notes.log</code>。</li>
+</ul>
+<hr>
+<h3 id="iostat命"><a href="#iostat命" class="headerlink" title="iostat命"></a>iostat命</h3><p>iostat主要用于监控系统设备的IO负载情况，根据这个可以看出当前系统的写入量和读取量，CPU负载和磁盘负载。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iostat [-x] [num1] [num2]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项：<code>-x</code>，显示更多信息。</li>
+<li>参数：<code>num1</code>：数字，刷新间隔。</li>
+<li>参数：<code>num2</code>：数字，刷新几次。</li>
+</ul>
+<hr>
+<h3 id="sar命令"><a href="#sar命令" class="headerlink" title="sar命令"></a>sar命令</h3><p>可以使用sar命令查看网络的相关统计。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sar -n DEV num1 num2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项：<code>-n</code>，查看网络，DEV表示查看网络接口。</li>
+<li><code>num1</code>：刷新间隔（不填就查看一次结束）。</li>
+<li><code>num2</code>：查看次数（不填无限次数）。</li>
+</ul>
+<hr>
+<h3 id="man命令"><a href="#man命令" class="headerlink" title="man命令"></a>man命令</h3><p>man(英文全拼：Manual，手册）命令会列出一份完整的说明。 其内容包括命令语法、各选项的意义及相关命令 。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man [命令]</span><br></pre></td></tr></table></figure>
+
+<p>快捷键：</p>
+<ul>
+<li><code>q</code>，退出。</li>
+<li><code>Enter</code>，按行下翻。</li>
+<li><code>Space</code>，按页下翻。</li>
+<li><code>b</code>，上翻一页。</li>
+<li>查看cp命令的帮助信息，<code>man cp</code>。</li>
+<li>查看/etc/passwd文件的信息，<code>man /etc/passwd</code>。</li>
+<li>任何命令都支持：<code>--help</code>选项， 可以通过这个选项，查看命令的帮助。如：<code>ls --help</code>， 会列出ls命令的帮助文档。</li>
+</ul>
+<hr>
+<h3 id="hostname命令"><a href="#hostname命令" class="headerlink" title="hostname命令"></a>hostname命令</h3><p>可以通过hostname命令来查看本机的hostname。也可以直接<code>cat /etc/hostname</code>查看。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hostname查看主机名，<code>hostname</code>。</li>
+<li>临时修改主机名，关机后失效，<code>hostname newHostname</code>。</li>
+<li>永久修改主机名：<ul>
+<li>修改配置文件<code>/etc/hostname</code>保存退出，<code>vi /etc/hostname</code>,进入vi，删除旧主机名，输入新主机名newHostname，退出保存，<code>reboot</code>重启生效。</li>
+<li>使用命令<code>hostnamectl</code>，修改主机名（需root），<code>hostnamectl set-hostname newHostname</code>。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="管道符"><a href="#管道符" class="headerlink" title="管道符"></a>管道符</h3><p>写法：<code>|</code></p>
+<p>功能：将符号左边的结果，作为符号右边的输入。</p>
+<ul>
+<li>将cat a.txt的结果，作为grep命令的输入，用来过滤it关键字，<code>cat a.txt | grep it</code>。</li>
+<li>可以支持嵌套使用，<code>cat it.txt | grep keyword | grep it</code>。</li>
+<li>过滤ls的结果，<code>ls | grep Desktop</code></li>
+<li>过滤结果，只找路径带有/usr/lib64的结果，<code>find / -name “test” | grep “/usr/lib64”</code>。</li>
+</ul>
+<hr>
+<h1 id="vi-vim文本编辑器"><a href="#vi-vim文本编辑器" class="headerlink" title="vi\vim文本编辑器"></a>vi\vim文本编辑器</h1><p>vi\vim是visual interface的简称, 是Linux中最经典的文本编辑器，vim 是 vi 的加强版本，兼容 vi 的所有指令，不仅能编辑文本，而且还具有 shell 程序编辑的功能，可以不同颜色的字体来辨别语法的正确性，极大方便了程序的设计和编辑性。 </p>
+<p>基本上 vi/vim 共分为三种模式，分别是命令模式（Command mode），输入模式（Insert mode）和底线命令模式（Last line mode）。 这三种模式的作用分别是：</p>
+<ul>
+<li>命令模式：命令模式下，所敲的按键编辑器都理解为命令，以命令驱动执行不同的功能。此模型下，不能自由进行文本编辑。</li>
+<li>输入模式：也就是所谓的编辑模式、插入模式。此模式下，可以对文件内容进行自由编辑。</li>
+<li>底线命令模式：以<code>：</code>开始，通常用于文件的保存、退出。</li>
+</ul>
+<img src="/2023/02/01/6348/Snipaste_2023-03-25_11-55-32.png" class="" title="vi&#x2F;vim模式">
+
+<hr>
+<h2 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h2><p>如果需要通过vi/vim编辑器编辑文件，通过如下命令任意一个均可：</p>
+<ul>
+<li>打开或新建文件，并将光标置于第一行首，<code>vi filename</code>。</li>
+<li>打开或新建文件，并将光标置于第一行首，<code>vim filename</code>。</li>
+<li>打开文件，并将光标置于第n行首，<code>vim +n filename</code>。</li>
+<li>打开文件，并将光标置于最后一行首 ，<code>vim + filename</code>。</li>
+<li>打开文件，并将光标置于第一个与pattern匹配的串处，<code>vim +/pattern filename</code>。</li>
+<li>在上次正用vi编辑时发生系统崩溃，恢复filename，<code>vim -r filename</code>。</li>
+<li>打开多个文件，依次进行编辑，<code>vim filename....filename</code>。</li>
+</ul>
+<p>刚启动 vi/vim，便进入了命令模式。此状态下敲击键盘动作会被Vim识别为命令，而非输入字符。比如我们此时按下<code>i</code>，并不会输入一个字符，<code>i</code>被当作了一个命令。 以下是常用的几个命令： </p>
+<ul>
+<li><code>i</code> 切换到输入模式，以输入字符。</li>
+<li><code>x</code> 删除当前光标所在处的字符。</li>
+<li><code>:</code> 切换到底线命令模式，以在最底一行输入命令。</li>
+</ul>
+<p>命令模式下的一些常见快捷键</p>
+<ol>
+<li><strong>进入输入或取代的编辑模式</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>i</code></td>
+<td align="center">在当前光标位置，进入输入模式</td>
+</tr>
+<tr>
+<td align="center"><code>a</code></td>
+<td align="center">在当前光标位置之后，进入输入模式</td>
+</tr>
+<tr>
+<td align="center"><code>I</code></td>
+<td align="center">在当行开头，进入输入模式</td>
+</tr>
+<tr>
+<td align="center"><code>A</code></td>
+<td align="center">在当行结尾，进入输入模式</td>
+</tr>
+<tr>
+<td align="center"><code>o</code></td>
+<td align="center">在当前光标下一行，进入输入模式</td>
+</tr>
+<tr>
+<td align="center"><code>O</code></td>
+<td align="center">在当前光标上一行，进入输入模式</td>
+</tr>
+<tr>
+<td align="center"><code>esc</code></td>
+<td align="center">返回命令模式</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li><strong>移动光标的方法和搜索替换</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>k</code></td>
+<td align="center">上</td>
+</tr>
+<tr>
+<td align="center"><code>j</code></td>
+<td align="center">下</td>
+</tr>
+<tr>
+<td align="center"><code>h</code></td>
+<td align="center">左</td>
+</tr>
+<tr>
+<td align="center"><code>l</code></td>
+<td align="center">右</td>
+</tr>
+<tr>
+<td align="center"><code>0</code></td>
+<td align="center">移动到当行开头</td>
+</tr>
+<tr>
+<td align="center"><code>$</code></td>
+<td align="center">移动到当行结尾</td>
+</tr>
+<tr>
+<td align="center"><code>gg</code></td>
+<td align="center">跳到首行</td>
+</tr>
+<tr>
+<td align="center"><code>G</code></td>
+<td align="center">跳到尾行</td>
+</tr>
+<tr>
+<td align="center"><code>pageup（PgUp）</code></td>
+<td align="center">向上翻页</td>
+</tr>
+<tr>
+<td align="center"><code>pagedown（PgDn）</code></td>
+<td align="center">向下翻页</td>
+</tr>
+<tr>
+<td align="center"><code>/</code></td>
+<td align="center">进入搜索模式</td>
+</tr>
+<tr>
+<td align="center"><code>n</code></td>
+<td align="center">向下继续搜索</td>
+</tr>
+<tr>
+<td align="center"><code>N</code></td>
+<td align="center">向上继续搜索</td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li><strong>删除、复制与粘贴</strong></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>dd</code></td>
+<td align="center">删除当前行</td>
+</tr>
+<tr>
+<td align="center"><code>ndd</code></td>
+<td align="center">向下删除n行</td>
+</tr>
+<tr>
+<td align="center"><code>yy</code></td>
+<td align="center">复制当前行</td>
+</tr>
+<tr>
+<td align="center"><code>nyy</code></td>
+<td align="center">向下复制n行</td>
+</tr>
+<tr>
+<td align="center"><code>p</code></td>
+<td align="center">粘贴</td>
+</tr>
+<tr>
+<td align="center"><code>u</code></td>
+<td align="center">撤销</td>
+</tr>
+<tr>
+<td align="center"><code>ctrl + r</code></td>
+<td align="center">反向撤销</td>
+</tr>
+<tr>
+<td align="center"><code>dG</code></td>
+<td align="center">向下删除尾行（向下的所有）</td>
+</tr>
+<tr>
+<td align="center"><code>dgg</code></td>
+<td align="center">向上删除到首行（向上的所有）</td>
+</tr>
+<tr>
+<td align="center"><code>d0</code></td>
+<td align="center">删除到本行开头</td>
+</tr>
+<tr>
+<td align="center"><code>d$</code></td>
+<td align="center">删除到本行结尾</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="输入模式"><a href="#输入模式" class="headerlink" title="输入模式"></a>输入模式</h2><p>在命令模式下按下<code>i</code>就进入了输入模式。在输入模式中，可以使用以下按键：</p>
+<ul>
+<li><strong>字符按键以及Shift组合</strong>，输入字符</li>
+<li><strong>ENTER</strong>，回车键，换行</li>
+<li><strong>BACK SPACE</strong>，退格键，删除光标前一个字符</li>
+<li><strong>DEL</strong>，删除键，删除光标后一个字符</li>
+<li><strong>方向键</strong>，在文本中移动光标</li>
+<li><strong>HOME/END</strong>，移动光标到行首/行尾</li>
+<li><strong>Page Up/Page Down</strong>，上/下翻页</li>
+<li><strong>Insert</strong>，切换光标为输入/替换模式，光标将变成竖线/下划线</li>
+<li><strong>ESC</strong>，退出输入模式，切换到命令模式</li>
+</ul>
+<hr>
+<h2 id="底线命令模式"><a href="#底线命令模式" class="headerlink" title="底线命令模式"></a>底线命令模式</h2><p>在命令模式下按下<code>:</code>就进入了底线命令模式。</p>
+<ol>
+<li><strong>指令行的储存、离开等指令</strong><table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>:wq</code></td>
+<td align="center">保存并退出</td>
+</tr>
+<tr>
+<td align="center"><code>:q</code></td>
+<td align="center">仅退出</td>
+</tr>
+<tr>
+<td align="center"><code>:q!</code></td>
+<td align="center">强制退出</td>
+</tr>
+<tr>
+<td align="center"><code>:w</code></td>
+<td align="center">仅保存</td>
+</tr>
+<tr>
+<td align="center"><code>:set nu</code></td>
+<td align="center">显示行号</td>
+</tr>
+<tr>
+<td align="center"><code>set paste</code></td>
+<td align="center">设置粘贴模式</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<hr>
+<h1 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h1><p>软件安装，CentOS系统和Ubuntu是使用不同的包管理器。CentOS使用<code>yum</code>管理器，Ubuntu使用<code>apt</code>管理器。<code>yum</code>和 <code>apt</code>均需要root权限，<code>yum</code>和 <code>apt</code>均需联网管理软件安装。</p>
+<h2 id="yum命令"><a href="#yum命令" class="headerlink" title="yum命令"></a>yum命令</h2><p>yum（ Yellow dog Updater, Modified）是一个在Fedora和RedHa 以及SUSE中的Shell前端软件包管理器。</p>
+<p>基于<code>RPM</code>包管理，能够从指定的服务器自动下载 RPM 包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包，无须繁琐地一次次下载、安装。</p>
+<p>yum提供了查找、安装、删除某一个、一组甚至全部软件包的命令，而且命令简洁而又好记。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum [options] [command] [package ...]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项<code>options</code>，可选，选项包括<code>-h</code>（帮助），<code>-y</code>（当安装过程提示选择全部为 “yes”），<code>-q</code>（不显示安装的过程）等。</li>
+<li>选项<code>command</code>，要进行的操作，<code>install</code>（安装），选项<code>remove</code>（卸载），选项<code>search</code>（搜索）等。</li>
+<li>参数<code>package ...</code>，软件名称。</li>
+<li>yum常用命令：<ul>
+<li>列出所有可更新的软件清单命令，<code>yum check-update</code>。</li>
+<li>更新所有软件命令，<code>yum update</code>。</li>
+<li>仅安装指定的软件命令，<code>yum install &lt;package_name&gt;</code>。</li>
+<li>仅更新指定的软件命令，<code>yum update &lt;package_name&gt;</code>。</li>
+<li>列出所有可安裝的软件清单命令，<code>yum list</code>。</li>
+<li>删除软件包命令，<code>yum remove &lt;package_name&gt;</code>。</li>
+<li>查找软件包命令，<code>yum search &lt;keyword&gt;</code>。</li>
+<li>清除缓存目录下的软件包，<code>yum clean packages</code>。</li>
+<li>清除缓存目录下的 headers，<code>yum clean headers</code>。 </li>
+<li>清除缓存目录下旧的 headers，<code>yum clean oldheaders</code>。</li>
+<li>清除缓存目录下的软件包及旧的 headers，<code>yum clean, yum clean all (= yum clean packages; yum clean oldheaders)</code> 。</li>
+</ul>
+</li>
+<li>更换yum源：<ul>
+<li>首先备份<code>/etc/yum.repos.d/CentOS-Base.repo</code>，<code>mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup</code>。</li>
+<li>下载对应版本repo文件, 放入<code>/etc/yum.repos.d/</code>文件夹下。</li>
+<li>运行以下命令生成缓存，<code>yum clean all</code>，<code>yum makecache</code>。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="apt命令"><a href="#apt命令" class="headerlink" title="apt命令"></a>apt命令</h2><p>apt（Advanced Packaging Tool）是一个在Debian和Ubuntu中的Shell前端软件包管理器。</p>
+<p>apt命令提供了查找、安装、升级、删除某一个、一组甚至全部软件包的命令，而且命令简洁而又好记。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt [options] [command] [package ...]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选项<code>options</code>，可选，选项包括<code>-h</code>（帮助），<code>-y</code>（当安装过程提示选择全部为 “yes”），<code>-q</code>（不显示安装的过程）等。</li>
+<li>选项<code>command</code>，要进行的操作，<code>install</code>（安装），选项<code>remove</code>（卸载），选项<code>search</code>（搜索）等。</li>
+<li>参数<code>package ...</code>，软件名称。</li>
+<li>apt常用命令：<ul>
+<li>列出所有可更新的软件清单命令，<code>sudo apt update</code>。</li>
+<li>升级软件包，<code>sudo apt upgrade</code>。</li>
+<li>列出可更新的软件包及版本信息，<code>apt list --upgradeable</code>。</li>
+<li>升级软件包，升级前先删除需要更新软件包，<code>sudo apt full-upgrade</code>。</li>
+<li>安装指定的软件命令，<code>sudo apt install &lt;package_name&gt;</code>。</li>
+<li>安装多个软件包，<code>sudo apt install &lt;package_1&gt; &lt;package_2&gt; &lt;package_3&gt;</code>。</li>
+<li>更新指定的软件命令，<code>sudo apt update &lt;package_name&gt;</code>。</li>
+<li>显示软件包具体信息,例如，<code>版本号，安装大小，依赖关系等等，</code>sudo apt show <package_name>`。</li>
+<li>删除软件包命令，<code>sudo apt remove &lt;package_name&gt;</code>。</li>
+<li>清理不再使用的依赖和库文件: sudo apt autoremove`。</li>
+<li>移除软件包及配置文件: sudo apt purge <package_name>`。</li>
+<li>查找软件包命令，<code> sudo apt search &lt;keyword&gt;</code>。</li>
+<li>列出所有已安装的包，<code>apt list --installed</code>。</li>
+<li>列出所有已安装的包的版本信息，<code>apt list --all-versions</code>。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h1><h2 id="修改Linux时区"><a href="#修改Linux时区" class="headerlink" title="修改Linux时区"></a>修改Linux时区</h2><p>系统默认时区非中国的东八区。</p>
+<p>使用root权限，执行如下命令，将系统自带的<code>/etc/localtime</code>文件删除，并将<code>/usr/share/zoneinfo/Asia/Shanghai</code>文件链接为<code>/etc/localtime</code>文件即可，修改时区为东八区时区。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -f /etc/localtime</span><br><span class="line">sudo ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="同步时间"><a href="#同步时间" class="headerlink" title="同步时间"></a>同步时间</h2><p>可以通过ntp程序自动校准系统时间。安装ntp：<code>yum -y install ntp</code>。</p>
+<p>启动并设置开机自启：</p>
+<ul>
+<li><code>systemctl start ntpd</code></li>
+<li><code>systemctl enable ntpd</code></li>
+</ul>
+<p>当ntpd启动后会定期的联网校准系统的时间。</p>
+<p>也可以手动校准（需root权限），通过阿里云提供的服务网址配合<code>ntpdate</code>命令（安装ntp后会附带这个命令）自动校准，执行以下命令<code>ntpdate -u ntp.aliyun.com</code>。</p>
+<hr>
+<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>可以通过主机名找到对应计算机的IP地址，这就是主机名映射（域名解析）。</p>
+<p>先通过系统本地的记录去查找，如果找不到就联网去公开DNS服务器去查找。</p>
+<p>系统本地的记录：</p>
+<ul>
+<li>Windows看，<code>C:\Windows\System32\drivers\etc\hosts</code>。</li>
+<li>Linux看，<code>/etc/hosts</code>。</li>
+</ul>
+<h2 id="强制停止"><a href="#强制停止" class="headerlink" title="强制停止"></a>强制停止</h2><p>Linux某些程序的运行，如果想要强制停止它，可以使用快捷键<code>ctrl + c</code>。</p>
+<p>命令输入错误，也可以通过快捷键<code>ctrl + c</code>，退出当前输入，重新输入。</p>
+<hr>
+<h2 id="退出或登出"><a href="#退出或登出" class="headerlink" title="退出或登出"></a>退出或登出</h2><p>可以通过快捷键<code>ctrl + d</code>，退出账户的登录，或者退出某些特定程序的专属页面，但不能用于退出vi/vim。</p>
+<hr>
+<h2 id="历史命令搜索"><a href="#历史命令搜索" class="headerlink" title="历史命令搜索"></a>历史命令搜索</h2><ul>
+<li>可以通过<code>history</code>命令，查看历史输入过的命令。</li>
+<li>可以通过<code>!命令前缀</code>，自动执行上一次匹配前缀的命令，如输入<code>!cr</code>自动执行上一次<code>clear</code>清屏命令。</li>
+<li>可以通过快捷键<code>ctrl + r</code>，输入内容去匹配历史命令，如果搜索到的内容是需要的，那么回车键可以直接执行，使用键盘左右键，可以得到此命令（不执行）。</li>
+</ul>
+<hr>
+<h2 id="光标移动快捷键"><a href="#光标移动快捷键" class="headerlink" title="光标移动快捷键"></a>光标移动快捷键</h2><ul>
+<li><code>ctrl + a</code>，跳到命令开头</li>
+<li><code>ctrl + e</code>，跳到命令结尾</li>
+<li><code>ctrl + 键盘左键</code>，向左跳一个单词</li>
+<li><code>ctrl + 键盘右键</code>，向右跳一个单词</li>
+</ul>
+<hr>
+<h2 id="清屏"><a href="#清屏" class="headerlink" title="清屏"></a>清屏</h2><p>通过快捷键<code>ctrl + l</code>，可以清空终端内容，或通过命令<code>clear</code>得到同样效果。</p>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wenwenmidgard.github.io">FloweryMidgard</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wenwenmidgard.github.io/2023/02/01/6348.html">https://wenwenmidgard.github.io/2023/02/01/6348.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wenwenmidgard.github.io" target="_blank">FloweryMidgard</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/01/15/55225.html" title="JavaWeb的使用"><img class="cover" src="/images/note/top_img_7.jpg" onerror="onerror=null;src='/images/404/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JavaWeb的使用</div></div></a></div><div class="next-post pull-right"><a href="/2023/02/05/34208.html" title="Maven基础篇"><img class="cover" src="/images/note/top_img_3.jpg" onerror="onerror=null;src='/images/404/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Maven基础篇</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/UserPhoto.gif" onerror="this.onerror=null;this.src='/images/404/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FloweryMidgard</div><div class="author-info__description">FloweryMidgard's Blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">35</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">19</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wenwenmidgard"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wenwenmidgard" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:wenwenmidgard@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">城市的灯光越亮，星光就会越暗淡。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">1.</span> <span class="toc-text">Linux目录结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">2.</span> <span class="toc-text">Linux环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PATH"><span class="toc-number">2.1.</span> <span class="toc-text">PATH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PATH%E5%8F%98%E9%87%8F%E5%80%BC%E8%8E%B7%E5%8F%96"><span class="toc-number">2.2.</span> <span class="toc-text">PATH变量值获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PATH%E5%8F%98%E9%87%8F%E5%80%BC%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.3.</span> <span class="toc-text">PATH变量值设置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E8%B7%AF%E5%BE%84"><span class="toc-number">3.</span> <span class="toc-text">Linux路径</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="toc-number">3.1.</span> <span class="toc-text">绝对路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="toc-number">3.2.</span> <span class="toc-text">相对路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E8%B7%AF%E5%BE%84%E7%AC%A6"><span class="toc-number">3.3.</span> <span class="toc-text">特殊路径符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E3%80%81%E7%94%A8%E6%88%B7%E7%BB%84"><span class="toc-number">4.</span> <span class="toc-text">用户、用户组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-number">4.1.</span> <span class="toc-text">用户管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86"><span class="toc-number">4.2.</span> <span class="toc-text">用户组管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B6%85%E7%BA%A7%E7%AE%A1%E7%90%86%E5%91%98"><span class="toc-number">4.3.</span> <span class="toc-text">超级管理员</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-%E6%96%87%E4%BB%B6%E5%9F%BA%E6%9C%AC%E5%B1%9E%E6%80%A7"><span class="toc-number">5.</span> <span class="toc-text">Linux 文件基本属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E5%91%BD%E4%BB%A4"><span class="toc-number">6.</span> <span class="toc-text">Linux命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E5%91%BD%E4%BB%A4%E5%9F%BA%E7%A1%80%E6%A0%BC%E5%BC%8F"><span class="toc-number">6.1.</span> <span class="toc-text">Linux命令基础格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86"><span class="toc-number">6.2.</span> <span class="toc-text">磁盘管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#df%E5%91%BD%E4%BB%A4"><span class="toc-number">6.2.1.</span> <span class="toc-text">df命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#du%E5%91%BD%E4%BB%A4"><span class="toc-number">6.2.2.</span> <span class="toc-text">du命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ls%E5%91%BD%E4%BB%A4"><span class="toc-number">6.2.3.</span> <span class="toc-text">ls命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cd%E5%91%BD%E4%BB%A4"><span class="toc-number">6.2.4.</span> <span class="toc-text">cd命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwd%E5%91%BD%E4%BB%A4"><span class="toc-number">6.2.5.</span> <span class="toc-text">pwd命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mkdir%E5%91%BD%E4%BB%A4"><span class="toc-number">6.2.6.</span> <span class="toc-text">mkdir命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-number">6.3.</span> <span class="toc-text">文件管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#touch%E5%91%BD%E4%BB%A4"><span class="toc-number">6.3.1.</span> <span class="toc-text">touch命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cat%E5%91%BD%E4%BB%A4"><span class="toc-number">6.3.2.</span> <span class="toc-text">cat命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#split%E5%91%BD%E4%BB%A4"><span class="toc-number">6.3.3.</span> <span class="toc-text">split命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#more%E5%91%BD%E4%BB%A4"><span class="toc-number">6.3.4.</span> <span class="toc-text">more命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chmod%E5%91%BD%E4%BB%A4"><span class="toc-number">6.3.5.</span> <span class="toc-text">chmod命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chown%E5%91%BD%E4%BB%A4"><span class="toc-number">6.3.6.</span> <span class="toc-text">chown命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cp%E5%91%BD%E4%BB%A4"><span class="toc-number">6.3.7.</span> <span class="toc-text">cp命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scp%E5%91%BD%E4%BB%A4"><span class="toc-number">6.3.8.</span> <span class="toc-text">scp命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mv%E5%91%BD%E4%BB%A4"><span class="toc-number">6.3.9.</span> <span class="toc-text">mv命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rm%E5%91%BD%E4%BB%A4"><span class="toc-number">6.3.10.</span> <span class="toc-text">rm命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#which%E5%91%BD%E4%BB%A4"><span class="toc-number">6.3.11.</span> <span class="toc-text">which命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#find%E5%91%BD%E4%BB%A4"><span class="toc-number">6.3.12.</span> <span class="toc-text">find命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ln%E5%91%BD%E4%BB%A4"><span class="toc-number">6.3.13.</span> <span class="toc-text">ln命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91"><span class="toc-number">6.4.</span> <span class="toc-text">文档编辑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#grep%E5%91%BD%E4%BB%A4"><span class="toc-number">6.4.1.</span> <span class="toc-text">grep命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wc%E5%91%BD%E4%BB%A4"><span class="toc-number">6.4.2.</span> <span class="toc-text">wc命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#echo%E5%91%BD%E4%BB%A4"><span class="toc-number">6.4.3.</span> <span class="toc-text">echo命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91%E7%AC%A6"><span class="toc-number">6.4.4.</span> <span class="toc-text">重定向符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%87%E4%BB%BD%E5%8E%8B%E7%BC%A9"><span class="toc-number">6.5.</span> <span class="toc-text">备份压缩</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tar%E5%91%BD%E4%BB%A4"><span class="toc-number">6.5.1.</span> <span class="toc-text">tar命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zip%E5%91%BD%E4%BB%A4"><span class="toc-number">6.5.2.</span> <span class="toc-text">zip命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unzip%E5%91%BD%E4%BB%A4"><span class="toc-number">6.5.3.</span> <span class="toc-text">unzip命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86"><span class="toc-number">6.6.</span> <span class="toc-text">系统管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#su%E5%91%BD%E4%BB%A4"><span class="toc-number">6.6.1.</span> <span class="toc-text">su命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sudo%E5%91%BD%E4%BB%A4"><span class="toc-number">6.6.2.</span> <span class="toc-text">sudo命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exit%E5%91%BD%E4%BB%A4"><span class="toc-number">6.6.3.</span> <span class="toc-text">exit命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#whoami"><span class="toc-number">6.6.4.</span> <span class="toc-text">whoami</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useradd%E5%91%BD%E4%BB%A4"><span class="toc-number">6.6.5.</span> <span class="toc-text">useradd命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#userdel%E5%91%BD%E4%BB%A4"><span class="toc-number">6.6.6.</span> <span class="toc-text">userdel命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#usermod%E5%91%BD%E4%BB%A4"><span class="toc-number">6.6.7.</span> <span class="toc-text">usermod命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#id%E5%91%BD%E4%BB%A4"><span class="toc-number">6.6.8.</span> <span class="toc-text">id命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#groupadd%E5%91%BD%E4%BB%A4"><span class="toc-number">6.6.9.</span> <span class="toc-text">groupadd命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#groupdel%E5%91%BD%E4%BB%A4"><span class="toc-number">6.6.10.</span> <span class="toc-text">groupdel命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#groupmod%E5%91%BD%E4%BB%A4"><span class="toc-number">6.6.11.</span> <span class="toc-text">groupmod命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#newgrp-%E5%91%BD%E4%BB%A4"><span class="toc-number">6.6.12.</span> <span class="toc-text">newgrp 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getent%E5%91%BD%E4%BB%A4"><span class="toc-number">6.6.13.</span> <span class="toc-text">getent命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#free%E5%91%BD%E4%BB%A4"><span class="toc-number">6.6.14.</span> <span class="toc-text">free命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ps%E5%91%BD%E4%BB%A4"><span class="toc-number">6.6.15.</span> <span class="toc-text">ps命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kill%E5%91%BD%E4%BB%A4"><span class="toc-number">6.6.16.</span> <span class="toc-text">kill命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#top%E5%91%BD%E4%BB%A4"><span class="toc-number">6.6.17.</span> <span class="toc-text">top命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#systemctl%E5%91%BD%E4%BB%A4"><span class="toc-number">6.6.18.</span> <span class="toc-text">systemctl命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#date%E5%91%BD%E4%BB%A4"><span class="toc-number">6.6.19.</span> <span class="toc-text">date命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E9%80%9A%E8%AE%AF"><span class="toc-number">6.7.</span> <span class="toc-text">网络通讯</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ifconfig%E5%91%BD%E4%BB%A4"><span class="toc-number">6.7.1.</span> <span class="toc-text">ifconfig命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ping-%E5%91%BD%E4%BB%A4"><span class="toc-number">6.7.2.</span> <span class="toc-text">ping 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wget%E5%91%BD%E4%BB%A4"><span class="toc-number">6.7.3.</span> <span class="toc-text">wget命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#curl%E5%91%BD%E4%BB%A4"><span class="toc-number">6.7.4.</span> <span class="toc-text">curl命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#netstat%E5%91%BD%E4%BB%A4"><span class="toc-number">6.7.5.</span> <span class="toc-text">netstat命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4"><span class="toc-number">6.8.</span> <span class="toc-text">其他命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tail%E5%91%BD%E4%BB%A4"><span class="toc-number">6.8.1.</span> <span class="toc-text">tail命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iostat%E5%91%BD"><span class="toc-number">6.8.2.</span> <span class="toc-text">iostat命</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sar%E5%91%BD%E4%BB%A4"><span class="toc-number">6.8.3.</span> <span class="toc-text">sar命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#man%E5%91%BD%E4%BB%A4"><span class="toc-number">6.8.4.</span> <span class="toc-text">man命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hostname%E5%91%BD%E4%BB%A4"><span class="toc-number">6.8.5.</span> <span class="toc-text">hostname命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%A1%E9%81%93%E7%AC%A6"><span class="toc-number">6.8.6.</span> <span class="toc-text">管道符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#vi-vim%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number">7.</span> <span class="toc-text">vi\vim文本编辑器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="toc-number">7.1.</span> <span class="toc-text">命令模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F"><span class="toc-number">7.2.</span> <span class="toc-text">输入模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%95%E7%BA%BF%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="toc-number">7.3.</span> <span class="toc-text">底线命令模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-number">8.</span> <span class="toc-text">软件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#yum%E5%91%BD%E4%BB%A4"><span class="toc-number">8.1.</span> <span class="toc-text">yum命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#apt%E5%91%BD%E4%BB%A4"><span class="toc-number">8.2.</span> <span class="toc-text">apt命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="toc-number">9.</span> <span class="toc-text">小技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9Linux%E6%97%B6%E5%8C%BA"><span class="toc-number">9.1.</span> <span class="toc-text">修改Linux时区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E6%97%B6%E9%97%B4"><span class="toc-number">9.2.</span> <span class="toc-text">同步时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="toc-number">9.3.</span> <span class="toc-text">域名解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E5%81%9C%E6%AD%A2"><span class="toc-number">9.4.</span> <span class="toc-text">强制停止</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%80%E5%87%BA%E6%88%96%E7%99%BB%E5%87%BA"><span class="toc-number">9.5.</span> <span class="toc-text">退出或登出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%86%E5%8F%B2%E5%91%BD%E4%BB%A4%E6%90%9C%E7%B4%A2"><span class="toc-number">9.6.</span> <span class="toc-text">历史命令搜索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%89%E6%A0%87%E7%A7%BB%E5%8A%A8%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">9.7.</span> <span class="toc-text">光标移动快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%85%E5%B1%8F"><span class="toc-number">9.8.</span> <span class="toc-text">清屏</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/26/59401.html" title="SpringCloud基础篇"><img src="/images/note/top_img_2.jpg" onerror="this.onerror=null;this.src='/images/404/404.jpg'" alt="SpringCloud基础篇"/></a><div class="content"><a class="title" href="/2023/03/26/59401.html" title="SpringCloud基础篇">SpringCloud基础篇</a><time datetime="2023-03-26T02:24:00.000Z" title="发表于 2023-03-26 10:24:00">2023-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/21/14375.html" title="SpringBoot基础篇"><img src="/images/note/top_img_6.jpg" onerror="this.onerror=null;this.src='/images/404/404.jpg'" alt="SpringBoot基础篇"/></a><div class="content"><a class="title" href="/2023/03/21/14375.html" title="SpringBoot基础篇">SpringBoot基础篇</a><time datetime="2023-03-21T02:24:00.000Z" title="发表于 2023-03-21 10:24:00">2023-03-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/16/54676.html" title="Mybatis基础篇"><img src="/images/note/top_img_2.jpg" onerror="this.onerror=null;this.src='/images/404/404.jpg'" alt="Mybatis基础篇"/></a><div class="content"><a class="title" href="/2023/03/16/54676.html" title="Mybatis基础篇">Mybatis基础篇</a><time datetime="2023-03-16T02:24:00.000Z" title="发表于 2023-03-16 10:24:00">2023-03-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/06/51847.html" title="SpringMVC基础篇"><img src="/images/note/top_img_6.jpg" onerror="this.onerror=null;this.src='/images/404/404.jpg'" alt="SpringMVC基础篇"/></a><div class="content"><a class="title" href="/2023/03/06/51847.html" title="SpringMVC基础篇">SpringMVC基础篇</a><time datetime="2023-03-06T02:24:00.000Z" title="发表于 2023-03-06 10:24:00">2023-03-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/01/63124.html" title="Spring基础篇"><img src="/images/note/top_img_6.jpg" onerror="this.onerror=null;this.src='/images/404/404.jpg'" alt="Spring基础篇"/></a><div class="content"><a class="title" href="/2023/03/01/63124.html" title="Spring基础篇">Spring基础篇</a><time datetime="2023-03-01T02:24:00.000Z" title="发表于 2023-03-01 10:24:00">2023-03-01</time></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(90deg, #FAACA8 0%, #DDD6F3 50%, #17cec6 100%)"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By FloweryMidgard</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://wenwenmidgard.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="14px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></body></html>
